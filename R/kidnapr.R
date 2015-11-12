@@ -10,12 +10,6 @@ NULL
 #' @import shiny
 NULL
 
-#' @import shinydashboard
-NULL
-
-#' @import shinyjs
-NULL
-
 #' KidnapR shiny app call
 #' @examples
 #' kidnapr()

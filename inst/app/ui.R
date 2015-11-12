@@ -11,29 +11,29 @@ labelMandatory <- function(label) {
 }
 
 ### DASHBOARD HEADER ###
-uiheader <- dashboardHeader(title = tagList(icon("child"), "KidnapR"))
+uiheader <- shinydashboard::dashboardHeader(title = tagList(icon("child"), "KidnapR"))
 
 ### DASHBOARD SIDEBAR ###
-uisidebar <- dashboardSidebar(
-  sidebarMenu(
+uisidebar <- shinydashboard::dashboardSidebar(
+  shinydashboard::sidebarMenu(
     textInput("collector", label = labelMandatory("Collector"), value = ""),
     # h4(Sys.time()),
-    menuItem("Edit Records", tabName = "edit", icon = icon("edit"))
+    shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit"))
   )
 )
 
 ### DASHBOARD BODY ###
-uibody <- dashboardBody(
-  useShinyjs(), inlineCSS(appCSS),
-  tabItems(
-    tabItem(tabName = "edit",
+uibody <- shinydashboard::dashboardBody(
+  shinyjs::useShinyjs(), shinyjs::inlineCSS(appCSS),
+  shinydashboard::tabItems(
+    shinydashboard::tabItem(tabName = "edit",
             fluidRow(
-              box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = FALSE,
+              shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = FALSE,
                   DT::dataTableOutput("responses")
               )
             ),
             fluidRow(
-              box(background = "red", height = 70, width = 12,
+              shinydashboard::box(background = "red", height = 70, width = 12,
                   actionButton("submit", label = tagList(icon("plus"), "Add record"), width = "110px"),
                   actionButton("reset", label = tagList(icon("refresh"), "Reset inputs")),
                   shinyjs::disabled(actionButton("delete", label = tagList(icon("trash"), "Delete record"))),
@@ -52,7 +52,7 @@ uibody <- dashboardBody(
               )
             ),
             fluidRow(
-              box(id = "input", title = tagList(icon("edit"), "Input"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
+              shinydashboard::box(id = "input", title = tagList(icon("edit"), "Input"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
                   textInput("name", label = labelMandatory("Name"), value = ""),
                   dateInput("birth", label = "Birth date", startview = "year"),
                   dateInput("image", label = "Image date", startview = "year"),
@@ -61,7 +61,7 @@ uibody <- dashboardBody(
                   checkboxInput("used_shiny", label = "Used Shiny", value = FALSE),
                   sliderInput("r_num_years", label = "R Years", min = 0, max = 25, value = 2, ticks = FALSE)
               ),
-              box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
+              shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
                   dateInput("recdate", label = "Collection date", value = as.character(Sys.Date()))
               )
@@ -71,7 +71,7 @@ uibody <- dashboardBody(
 )
 
 ### SHINY UI ###
-ui <- dashboardPage(title = "KidnapR", skin = "purple",
+ui <- shinydashboard::dashboardPage(title = "KidnapR", skin = "purple",
                     uiheader,
                     uisidebar,
                     uibody
