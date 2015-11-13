@@ -17,7 +17,6 @@ uiheader <- shinydashboard::dashboardHeader(title = tagList(icon("child"), "Kidn
 uisidebar <- shinydashboard::dashboardSidebar(
   shinydashboard::sidebarMenu(
     textInput("collector", label = labelMandatory("Collector"), value = ""),
-    # h4(Sys.time()),
     shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit"))
   )
 )
@@ -28,7 +27,7 @@ uibody <- shinydashboard::dashboardBody(
   shinydashboard::tabItems(
     shinydashboard::tabItem(tabName = "edit",
             fluidRow(
-              shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = FALSE,
+              shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = TRUE,
                   DT::dataTableOutput("responses")
               )
             ),
@@ -54,16 +53,20 @@ uibody <- shinydashboard::dashboardBody(
             fluidRow(
               shinydashboard::box(id = "input", title = tagList(icon("edit"), "Input"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
                   textInput("name", label = labelMandatory("Name"), value = ""),
-                  dateInput("birth", label = "Birth date", startview = "year"),
-                  dateInput("image", label = "Image date", startview = "year"),
-                  shinyjs::disabled(textInput("aged", label = "Age (days)", value = "")),
-                  shinyjs::disabled(textInput("agey", label = "Age (years)", value = "")),
+                  fluidRow(
+                    column(width = 6, dateInput("birth", label = "Birth date", startview = "year")),
+                    column(width = 6, dateInput("image", label = "Image date", startview = "year"))
+                  ),
+                  fluidRow(
+                    column(width = 6, shinyjs::disabled(textInput("aged", label = "Age (days)", value = ""))),
+                    column(width = 6, shinyjs::disabled(textInput("agey", label = "Age (years)", value = "")))
+                  ),
                   checkboxInput("used_shiny", label = "Used Shiny", value = FALSE),
                   sliderInput("r_num_years", label = "R Years", min = 0, max = 25, value = 2, ticks = FALSE)
               ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
-                  dateInput("recdate", label = "Collection date", value = as.character(Sys.Date()))
+                  shinyjs::disabled(textInput("tstamp", label = "Timestamp", value = ""))
               )
             )
     )

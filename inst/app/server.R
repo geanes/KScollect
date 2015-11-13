@@ -6,15 +6,15 @@ fieldsMandatory <- c("collector", "name")
 # Fill the input fields with the values of the selected record in the table
 UpdateInputs <- function(data, session) {
   updateTextInput(session, "uid", value = unname(rownames(data)))
-  updateTextInput(session, "name", value = unname(data["name"]))
-  updateCheckboxInput(session, "used_shiny", value = as.logical(data["used_shiny"]))
-  updateSliderInput(session, "r_num_years", value = as.integer(data["r_num_years"]))
+  updateTextInput(session, "name", value = data[["name"]])
+  updateCheckboxInput(session, "used_shiny", value = data[["used_shiny"]])
+  updateSliderInput(session, "r_num_years", value = data[["r_num_years"]])
   # updateTextInput(session, "collector", value = as.character(data["collector"]))
-  # updateDateInput(session, "recdate", value = as.character(data["recdate"]))
-  # updateDateInput(session, "birth", value = as.character(data["birth"]))
-  # updateDateInput(session, "image", value = as.character(data["image"]))
-  # updateTextInput(session, "aged", value = as.character(data["aged"]))
-  # updateTextInput(session, "agey", value = as.character(data["agey"]))
+  updateTextInput(session, "tstamp", value = data[["tstamp"]])
+  updateDateInput(session, "birth", value = data[["birth"]])
+  updateDateInput(session, "image", value = data[["image"]])
+  updateTextInput(session, "aged", value = data[["aged"]])
+  updateTextInput(session, "agey", value = data[["agey"]])
 }
 
 ## SHINY SERVER
@@ -22,7 +22,16 @@ server <- function(input, output, session) {
 
   # input fields are treated as a group
   formData <- reactive({
-    sapply(names(GetTableMetadata()$fields), function(x) input[[x]])
+    ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
+    data <- list()
+    for(i in names(GetTableMetadata())) {
+      data[[i]] <- input[[i]]
+    }
+    data[["aged"]] <- ages[["aged"]]
+    data[["agey"]] <- ages[["agey"]]
+    data[["tstamp"]] <- human_time()
+    print(data)
+    return(data)
   })
 
   # watch for filling of mandatory fields
@@ -46,6 +55,8 @@ server <- function(input, output, session) {
     tryCatch({
       if (input$uid != "") {
         UpdateData(formData())
+        dat <- ReadData()[input$responses_rows_selected, ]
+        UpdateInputs(dat, session)
       } else {
         CreateData(formData())
         UpdateInputs(CreateDefaultRecord(), session)
@@ -104,11 +115,14 @@ server <- function(input, output, session) {
   }, server = FALSE,
   selection = "single",
   rownames = FALSE,
-  filter = list(position = "bottom", clear = TRUE, plain = FALSE),
+  filter = list(position = "top", clear = TRUE, plain = FALSE),
   class = "cell-border stripe hover condensed",
   extensions = "ColVis",
-  options = list(dom = 'C<"clear">lfrtip'),
-  colnames = unname(GetTableMetadata()$fields)[-1]
+  options = list(dom = 'C<"clear">lfrtip',
+                 pageLength = 5,
+                 colVis = list(exclude = c(2, 3, 6:9))
+  ),
+  colnames = GetTableLabels()[-1]
   )
 
   session$onSessionEnded(function(){stopApp("Thank you for using KidnapR.")})
