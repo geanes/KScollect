@@ -64,6 +64,19 @@ uibody <- shinydashboard::dashboardBody(
                   checkboxInput("used_shiny", label = "Used Shiny", value = FALSE),
                   sliderInput("r_num_years", label = "R Years", min = 0, max = 25, value = 2, ticks = FALSE)
               ),
+              shinydashboard::tabBox(title = tagList(icon("arrows-h"), "Measurements"), id = "mtabs",
+                tabPanel("Femur",
+                         numericInput("fmxl", "Maximum length", value = NA),
+                         numericInput("fpb", "Proximal breadth", value = NA),
+                         numericInput("fmsb", "Midshaft breadth", value = NA),
+                         numericInput("fdb", "Distal breadth", value = NA)
+                         ),
+                tabPanel("Tibia"),
+                tabPanel("Fibula"),
+                tabPanel("Humerus"),
+                tabPanel("Radius"),
+                tabPanel("Ulna")
+              ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
                   shinyjs::disabled(textInput("tstamp", label = "Timestamp", value = ""))
