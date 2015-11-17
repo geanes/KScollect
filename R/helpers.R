@@ -6,8 +6,8 @@ epoch_time <- function() {
 }
 
 # Generate a unique hash for the UID field.
-UIDgen <- function(name) {
-  x <- paste(epoch_time(), name, sep = " ")
+UIDgen <- function(s) {
+  x <- paste(epoch_time(), s, sep = " ")
   hash <- digest::digest(x, algo = "md5", serialize = FALSE)
   return(hash)
 }
@@ -24,5 +24,12 @@ date_age <- function(start, end) {
   age_days <- as.integer(lubridate::ymd(end) - lubridate::ymd(start))
   age_years <- as.numeric(round(age_days/365, digits = 2))
   result <- list(aged = age_days, agey = age_years)
+  return(result)
+}
+
+# Recents
+recents <- function() {
+  result <- c(collector = responses[which(responses$tstamp == max(responses$tstamp)), "collector"],
+              location = responses[which(responses$tstamp == max(responses$tstamp)), "location"])
   return(result)
 }

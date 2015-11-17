@@ -15,9 +15,13 @@ uiheader <- shinydashboard::dashboardHeader(title = tagList(icon("child"), "Kidn
 
 ### DASHBOARD SIDEBAR ###
 uisidebar <- shinydashboard::dashboardSidebar(
+  textInput("collector", label = labelMandatory("Collector"), value = ""),
+  textInput("location", label = labelMandatory("Location"), value = ""),
+  span(shinyjs::disabled(actionLink("recent", icon = icon("bolt"), label = "Recent")), style = "margin-left: 20px"),
+  br(), br(),
   shinydashboard::sidebarMenu(
-    textInput("collector", label = labelMandatory("Collector"), value = ""),
-    shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit"))
+    shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit")),
+    shinydashboard::menuItem("About", tabName = "about", icon = icon("info-circle"))
   )
 )
 
@@ -28,7 +32,8 @@ uibody <- shinydashboard::dashboardBody(
     shinydashboard::tabItem(tabName = "edit",
             fluidRow(
               shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = TRUE,
-                  DT::dataTableOutput("responses")
+                  shinyjs::hidden(div(id = "rectable", DT::dataTableOutput("responses"))),
+                  span(id = "norec", h4("No records to diplay."))
               )
             ),
             fluidRow(
@@ -52,7 +57,7 @@ uibody <- shinydashboard::dashboardBody(
             ),
             fluidRow(
               shinydashboard::box(id = "input", title = tagList(icon("edit"), "Input"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
-                  textInput("name", label = labelMandatory("Name"), value = ""),
+                  textInput("medrec", label = labelMandatory("Medical record"), value = ""),
                   fluidRow(
                     column(width = 6, dateInput("birth", label = "Birth date", startview = "year")),
                     column(width = 6, dateInput("image", label = "Image date", startview = "year"))
@@ -61,21 +66,73 @@ uibody <- shinydashboard::dashboardBody(
                     column(width = 6, shinyjs::disabled(textInput("aged", label = "Age (days)", value = ""))),
                     column(width = 6, shinyjs::disabled(textInput("agey", label = "Age (years)", value = "")))
                   ),
-                  checkboxInput("used_shiny", label = "Used Shiny", value = FALSE),
-                  sliderInput("r_num_years", label = "R Years", min = 0, max = 25, value = 2, ticks = FALSE)
+                  radioButtons("SEX", label = "Sex", choices = list("Male" = "M", "Female" = "F"), inline = TRUE)
               ),
               shinydashboard::tabBox(title = tagList(icon("arrows-h"), "Measurements"), id = "mtabs",
                 tabPanel("Femur",
-                         numericInput("fmxl", "Maximum length", value = NA),
-                         numericInput("fpb", "Proximal breadth", value = NA),
-                         numericInput("fmsb", "Midshaft breadth", value = NA),
-                         numericInput("fdb", "Distal breadth", value = NA)
-                         ),
-                tabPanel("Tibia"),
-                tabPanel("Fibula"),
-                tabPanel("Humerus"),
-                tabPanel("Radius"),
-                tabPanel("Ulna")
+                          fluidRow(
+                            column(width = 6,
+                              numericInput("FDL", "Diaphysial length", value = NA)
+                            ),
+                           column(width = 6,
+                              numericInput("FMSB", "Midshaft breadth", value = NA),
+                              numericInput("FDB", "Distal breadth", value = NA)
+                           )
+                          )
+                        ),
+                tabPanel("Tibia",
+                          fluidRow(
+                            column(width = 6,
+                              numericInput("TDL", "Diaphysial length", value = NA),
+                              numericInput("TPB", "Proximal Breadth", value = NA)
+                            ),
+                            column(width = 6,
+                              numericInput("TMSB", "Midshaft breadth", value = NA),
+                              numericInput("TDB", "Distal breadth", value = NA)
+                            )
+                          )
+                        ),
+                tabPanel("Fibula",
+                          fluidRow(
+                            column(width = 6,
+                                   numericInput("FBDL", "Diaphysial length", value = NA)
+                            )
+                          )
+                        ),
+                tabPanel("Humerus",
+                          fluidRow(
+                            column(width = 6,
+                                   numericInput("HDL", "Diaphysial length", value = NA),
+                                   numericInput("HPB", "Proximal Breadth", value = NA)
+                            ),
+                            column(width = 6,
+                                   numericInput("HMSB", "Midshaft breadth", value = NA),
+                                   numericInput("HDB", "Distal breadth", value = NA)
+                            )
+                          )
+                        ),
+                tabPanel("Radius",
+                          fluidRow(
+                            column(width = 6,
+                                   numericInput("RDL", "Diaphysial length", value = NA),
+                                   numericInput("RPB", "Proximal Breadth", value = NA)
+                            ),
+                            column(width = 6,
+                                   numericInput("RMSB", "Midshaft breadth", value = NA),
+                                   numericInput("RDB", "Distal breadth", value = NA)
+                            )
+                          )
+                        ),
+                tabPanel("Ulna",
+                          fluidRow(
+                            column(width = 6,
+                                   numericInput("UDL", "Diaphysial length", value = NA)
+                            ),
+                            column(width = 6,
+                                   numericInput("UMSB", "Midshaft Breadth", value = NA)
+                            )
+                          )
+                        )
               ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),

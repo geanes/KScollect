@@ -1,20 +1,38 @@
 ## server.R ##
 
 # Mandatory fields list
-fieldsMandatory <- c("collector", "name")
+fieldsMandatory <- c("collector", "medrec", "location")
 
 # Fill the input fields with the values of the selected record in the table
 UpdateInputs <- function(data, session) {
   updateTextInput(session, "uid", value = unname(rownames(data)))
-  updateTextInput(session, "name", value = data[["name"]])
-  updateCheckboxInput(session, "used_shiny", value = data[["used_shiny"]])
-  updateSliderInput(session, "r_num_years", value = data[["r_num_years"]])
-  # updateTextInput(session, "collector", value = as.character(data["collector"]))
+  updateTextInput(session, "medrec", value = data[["medrec"]])
+  updateRadioButtons(session, "SEX", selected = as.character(data[["SEX"]]))
+  # updateTextInput(session, "collector", value = data[["collector"]])
+  # updateTextInput(session, "location", value = data[["location"]])
   updateTextInput(session, "tstamp", value = data[["tstamp"]])
   updateDateInput(session, "birth", value = data[["birth"]])
   updateDateInput(session, "image", value = data[["image"]])
   updateTextInput(session, "aged", value = data[["aged"]])
   updateTextInput(session, "agey", value = data[["agey"]])
+  updateNumericInput(session, "FDL", value = data[["FDL"]])
+  updateNumericInput(session, "FMSB", value = data[["FMSB"]])
+  updateNumericInput(session, "FDB", value = data[["FDB"]])
+  updateNumericInput(session, "TDL", value = data[["TDL"]])
+  updateNumericInput(session, "TPB", value = data[["TPB"]])
+  updateNumericInput(session, "TMSB", value = data[["TMSB"]])
+  updateNumericInput(session, "TDB", value = data[["TDB"]])
+  updateNumericInput(session, "FBDL", value = data[["FBDL"]])
+  updateNumericInput(session, "HDL", value = data[["HDL"]])
+  updateNumericInput(session, "HPB", value = data[["HPB"]])
+  updateNumericInput(session, "HMSB", value = data[["HMSB"]])
+  updateNumericInput(session, "HDB", value = data[["HDB"]])
+  updateNumericInput(session, "RDL", value = data[["RDL"]])
+  updateNumericInput(session, "RPB", value = data[["RPB"]])
+  updateNumericInput(session, "RMSB", value = data[["RMSB"]])
+  updateNumericInput(session, "RDB", value = data[["RDB"]])
+  updateNumericInput(session, "UDL", value = data[["UDL"]])
+  updateNumericInput(session, "UMSB", value = data[["UMSB"]])
 }
 
 ## SHINY SERVER
@@ -30,7 +48,7 @@ server <- function(input, output, session) {
     data[["aged"]] <- ages[["aged"]]
     data[["agey"]] <- ages[["agey"]]
     data[["tstamp"]] <- human_time()
-    print(data)
+    # print(data)
     return(data)
   })
 
@@ -44,6 +62,15 @@ server <- function(input, output, session) {
     mandatoryFilled <- all(mandatoryFilled)
     # enable/disable the submit button
     shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
+  })
+
+  # Click "Most recent" button
+  observeEvent(input$recent, {
+    if (exists("responses") && length(responses) > 0) {
+      last <- recents()
+      updateTextInput(session, "collector", value = last[["collector"]])
+      updateTextInput(session, "location", value = last[["location"]])
+    }
   })
 
   # Click "Submit" button -> save data
@@ -97,6 +124,7 @@ server <- function(input, output, session) {
     if (length(input$responses_rows_selected) > 0) {
       data <- ReadData()[input$responses_rows_selected, ]
       UpdateInputs(data, session)
+      updateTextInput(session, "location", value = data[["location"]])
       shinyjs::text("submit",  "<i class='fa fa-edit'></i> Edit record")
       shinyjs::enable("delete")
     }
@@ -111,18 +139,18 @@ server <- function(input, output, session) {
     input$delete
     #update after reset is clicked
     input$reset
-    ReadData()
+    ShowData()
   }, server = FALSE,
-  selection = "single",
-  rownames = FALSE,
-  filter = list(position = "top", clear = TRUE, plain = FALSE),
-  class = "cell-border stripe hover condensed",
-  extensions = "ColVis",
-  options = list(dom = 'C<"clear">lfrtip',
-                 pageLength = 5,
-                 colVis = list(exclude = c(2, 3, 6:9))
-  ),
-  colnames = GetTableLabels()[-1]
+     selection = "single",
+     rownames = FALSE,
+     filter = list(position = "top", clear = TRUE, plain = FALSE),
+     class = "cell-border stripe hover condensed",
+     extensions = "ColVis",
+     options = list(dom = 'C<"clear">lfrtip',
+                    pageLength = 3,
+                    lengthMenu = c(1, 3, 5, 10, 20),
+                    order = list(list(4, 'desc'))),
+     colnames = GetTableLabels(GetTableMetadata()[show()])
   )
 
   session$onSessionEnded(function(){stopApp("Thank you for using KidnapR.")})
