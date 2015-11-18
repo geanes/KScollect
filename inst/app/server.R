@@ -42,7 +42,7 @@ server <- function(input, output, session) {
   formData <- reactive({
     ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
     data <- list()
-    for(i in names(GetTableMetadata())) {
+    for (i in names(GetTableMetadata())) {
       data[[i]] <- input[[i]]
     }
     data[["aged"]] <- ages[["aged"]]
@@ -128,7 +128,6 @@ server <- function(input, output, session) {
       shinyjs::text("submit",  "<i class='fa fa-edit'></i> Edit record")
       shinyjs::enable("delete")
     }
-
   })
 
   # display table

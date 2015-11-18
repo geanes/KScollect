@@ -32,8 +32,8 @@ uibody <- shinydashboard::dashboardBody(
     shinydashboard::tabItem(tabName = "edit",
             fluidRow(
               shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = TRUE,
-                  shinyjs::hidden(div(id = "rectable", DT::dataTableOutput("responses"))),
-                  span(id = "norec", h4("No records to diplay."))
+                  div(id = "rectable", DT::dataTableOutput("responses"))#,
+                  # span(id = "norec", h4("No records to display."))
               )
             ),
             fluidRow(
