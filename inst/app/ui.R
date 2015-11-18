@@ -139,6 +139,9 @@ uibody <- shinydashboard::dashboardBody(
                   shinyjs::disabled(textInput("tstamp", label = "Timestamp", value = ""))
               )
             )
+    ),
+    shinydashboard::tabItem(tabName = "about",
+      includeMarkdown(system.file('app/www/md/measurements.md', package = 'kidnapr'))
     )
   )
 )
