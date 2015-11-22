@@ -35,15 +35,14 @@ CreateDefaultRecord <- function() {
 CastData <- function(data) {
   datar <- purrr::map2(names(data), data, as.table_type)
   names(datar) <- names(data)
-  datar <- as.data.frame(datar[which(names(data) != key())], stringsAsFactors = FALSE)
-  rownames(datar) <- data[key()]
+  datar <- as.data.frame(datar, stringsAsFactors = FALSE)
   return(datar)
 }
 
 ### CREATE ###
 CreateData <- function(data) {
   data <- CastData(data)
-  rownames(data) <- UIDgen(paste(data[["collector"]], data[["location"]]))
+  data[[key()]] <- UIDgen(paste(data[["collector"]], data[["location"]]))
   if (exists("responses")) {
     responses <<- rbind(responses, data)
   } else {
@@ -70,10 +69,10 @@ ShowData <- function() {
 ### UPDATE ###
 UpdateData <- function(data) {
   data <- CastData(data)
-  responses[row.names(responses) == row.names(data), ] <<- data
+  responses[responses[[key()]] == data[[key()]], ] <<- data
 }
 
 ### DELETE ###
 DeleteData <- function(data) {
-  responses <<- responses[row.names(responses) != unname(data[key()]), ]
+  responses <<- responses[responses[[key()]] != data[[key()]], ]
 }

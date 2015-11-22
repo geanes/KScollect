@@ -5,7 +5,7 @@ fieldsMandatory <- c("collector", "medrec", "location")
 
 # Fill the input fields with the values of the selected record in the table
 UpdateInputs <- function(data, session) {
-  updateTextInput(session, "uid", value = unname(rownames(data)))
+  updateTextInput(session, "uid", value = data[["uid"]])
   updateTextInput(session, "medrec", value = data[["medrec"]])
   updateRadioButtons(session, "SEX", selected = as.character(data[["SEX"]]))
   updateTextInput(session, "length_raw", value = data[["length_raw"]])
