@@ -17,6 +17,8 @@ GetTableMetadata <- function() {
     image = c(label = "Image Date", value = as.character(Sys.Date()), type = "character"),
     aged = c(label = "Age (days)", value = NA, type = "integer"),
     agey = c(label = "Age (years)", value = NA, type = "numeric"),
+    COD = c(label = "Cause of death", value = NA, type = "character"),
+    MOD = c(label = "Manner of death", value = NA, type = "chracter"),
     # femur
     FDL = c(label = "FDL", value = NA, type = "numeric"),
     FMSB = c(label = "FMSB", value = NA, type = "numeric"),

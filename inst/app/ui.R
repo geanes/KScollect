@@ -74,7 +74,9 @@ uibody <- shinydashboard::dashboardBody(
                   fluidRow(
                     column(width = 6, textInput("weight_raw", "Weight", value = "")),
                     column(width = 6, shinyjs::disabled(textInput("weight", "(kilograms)", value = NA)))
-                  )
+                  ),
+                  textInput("COD", label = "Cause of death", value = ""),
+                  textInput("MOD", label = "Manner of death", value = "")
               ),
               shinydashboard::tabBox(title = "Long bones", id = "mtabs",
                 tabPanel("Femur",

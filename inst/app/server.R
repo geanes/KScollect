@@ -19,6 +19,8 @@ UpdateInputs <- function(data, session) {
   updateDateInput(session, "image", value = data[["image"]])
   updateTextInput(session, "aged", value = data[["aged"]])
   updateTextInput(session, "agey", value = data[["agey"]])
+  updateTextInput(session, "COD", value = data[["COD"]])
+  updateTextInput(session, "MOD", value = data[["MOD"]])
   # long bones
   updateNumericInput(session, "FDL", value = data[["FDL"]])
   updateNumericInput(session, "FMSB", value = data[["FMSB"]])
