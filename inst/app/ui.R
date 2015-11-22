@@ -56,7 +56,7 @@ uibody <- shinydashboard::dashboardBody(
               )
             ),
             fluidRow(
-              shinydashboard::box(id = "input", title = tagList(icon("edit"), "Input"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
+              shinydashboard::box(id = "medinfo", title = tagList(icon("user-md"), "Medical Information"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
                   textInput("medrec", label = labelMandatory("Medical record"), value = ""),
                   fluidRow(
                     column(width = 6, dateInput("birth", label = "Birth date", startview = "year")),
@@ -69,14 +69,14 @@ uibody <- shinydashboard::dashboardBody(
                   radioButtons("SEX", label = "Sex", choices = list("Male" = "M", "Female" = "F"), inline = TRUE),
                   fluidRow(
                     column(width = 6, textInput("length_raw", "Length", value = "")),
-                    column(width = 6, shinyjs::disabled(numericInput("length", "(meters)", value = NA)))
+                    column(width = 6, shinyjs::disabled(textInput("length", "(meters)", value = NA)))
                   ),
                   fluidRow(
                     column(width = 6, textInput("weight_raw", "Weight", value = "")),
-                    column(width = 6, shinyjs::disabled(numericInput("weight", "(kilograms)", value = NA)))
+                    column(width = 6, shinyjs::disabled(textInput("weight", "(kilograms)", value = NA)))
                   )
               ),
-              shinydashboard::tabBox(title = tagList(icon("arrows-h"), "Measurements"), id = "mtabs",
+              shinydashboard::tabBox(title = "Long bones", id = "mtabs",
                 tabPanel("Femur",
                           fluidRow(
                             column(width = 6,
@@ -141,6 +141,10 @@ uibody <- shinydashboard::dashboardBody(
                             )
                           )
                         )
+              ),
+              shinydashboard::tabBox(title = "Dentition", id = "dentabs",
+                tabPanel("Maxillary"),
+                tabPanel("Mandibular")
               ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
