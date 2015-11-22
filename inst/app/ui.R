@@ -68,8 +68,8 @@ uibody <- shinydashboard::dashboardBody(
                   ),
                   radioButtons("SEX", label = "Sex", choices = list("Male" = "M", "Female" = "F"), inline = TRUE),
                   fluidRow(
-                    column(width = 6, textInput("length_raw", "Length", value = "")),
-                    column(width = 6, shinyjs::disabled(textInput("length", "(meters)", value = NA)))
+                    column(width = 6, textInput("height_raw", "Height", value = "")),
+                    column(width = 6, shinyjs::disabled(textInput("height", "(meters)", value = NA)))
                   ),
                   fluidRow(
                     column(width = 6, textInput("weight_raw", "Weight", value = "")),

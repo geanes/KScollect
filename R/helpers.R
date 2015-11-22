@@ -34,11 +34,11 @@ recents <- function() {
 }
 
 # Convert length
-convert_length <- function(len) {
-  len <- tolower(len)
-  len <- gsub(" ", "", len)
-  meas <- as.numeric(unlist(strsplit(len, "(m|cm|ft|in|\"|')")))
-  unit <- unlist(strsplit(len, "[0-9.]+"))
+convert_height <- function(height) {
+  hgt <- tolower(height)
+  hgt <- gsub(" ", "", hgt)
+  meas <- as.numeric(unlist(strsplit(hgt, "(m|cm|ft|in|\"|')")))
+  unit <- unlist(strsplit(hgt, "[0-9.]+"))
   unit <- unit[-1]
   if (length(unit) == 0) {
     return(meas[1])
