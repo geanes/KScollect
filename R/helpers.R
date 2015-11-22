@@ -33,3 +33,47 @@ recents <- function() {
               location = responses[which(responses$tstamp == max(responses$tstamp)), "location"])
   return(result)
 }
+
+# Convert length
+convert_length <- function(len) {
+  len <- tolower(len)
+  len <- gsub(" ", "", len)
+  meas <- as.numeric(unlist(strsplit(len, "(m|cm|ft|in|\"|')")))
+  unit <- unlist(strsplit(len, "[0-9.]+"))
+  unit <- unit[-1]
+  if (length(unit) == 0) {
+    return(meas[1])
+  } else {
+    result <- switch(unit[1],
+                "'" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
+                "ft" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
+                "\"" = meas[1] * 0.025,
+                "in" = meas[1] * 0.025,
+                "m" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 100, 0),
+                "cm" = meas[1] / 100,
+                NA
+              )
+    return(result)
+  }
+}
+
+# Convert weight
+convert_weight <- function(wt) {
+  wt <- tolower(wt)
+  wt <- gsub(" ", "", wt)
+  meas <- as.numeric(unlist(strsplit(wt, "(kg|g|lb|oz)")))
+  unit <- unlist(strsplit(wt, "[0-9.]+"))
+  unit <- unit[-1]
+  if (length(unit) == 0) {
+    return(meas[1])
+  } else {
+    result <- switch(unit[1],
+                "lb" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
+                "oz" = meas[1] * 0.028,
+                "g" = meas[1] / 1000,
+                "kg" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 1000, 0),
+                NA
+              )
+    return(result)
+  }
+}
