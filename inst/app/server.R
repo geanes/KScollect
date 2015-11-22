@@ -8,6 +8,10 @@ UpdateInputs <- function(data, session) {
   updateTextInput(session, "uid", value = unname(rownames(data)))
   updateTextInput(session, "medrec", value = data[["medrec"]])
   updateRadioButtons(session, "SEX", selected = as.character(data[["SEX"]]))
+  updateTextInput(session, "length_raw", value = data[["length_raw"]])
+  updateTextInput(session, "weight_raw", value = data[["weight_raw"]])
+  updateTextInput(session, "length", value = data[["length"]])
+  updateTextInput(session, "weight", value = data[["weight"]])
   # updateTextInput(session, "collector", value = data[["collector"]])
   # updateTextInput(session, "location", value = data[["location"]])
   updateTextInput(session, "tstamp", value = data[["tstamp"]])
@@ -41,12 +45,16 @@ server <- function(input, output, session) {
   # input fields are treated as a group
   formData <- reactive({
     ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
+    length <- convert_length(input[["length_raw"]])
+    weight <- convert_weight(input[["weight_raw"]])
     data <- list()
     for (i in names(GetTableMetadata())) {
       data[[i]] <- input[[i]]
     }
     data[["aged"]] <- ages[["aged"]]
     data[["agey"]] <- ages[["agey"]]
+    data[["length"]] <- length
+    data[["weight"]] <- weight
     data[["tstamp"]] <- human_time()
     # print(data)
     return(data)

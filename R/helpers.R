@@ -1,6 +1,6 @@
 ## helpers.R ##
 
-# time as integer
+# Time as integer
 epoch_time <- function() {
   as.integer(Sys.time())
 }
@@ -12,11 +12,10 @@ UIDgen <- function(s) {
   return(hash)
 }
 
-# human-readable timestamp
+# Human-readable timestamp
 human_time <- function() {
   format(Sys.time(), "%Y-%m-%d %H:%M:%OS")
 }
-
 
 # Calculate ages from dates
 date_age <- function(start, end) {
@@ -61,7 +60,7 @@ convert_length <- function(len) {
 convert_weight <- function(wt) {
   wt <- tolower(wt)
   wt <- gsub(" ", "", wt)
-  meas <- as.numeric(unlist(strsplit(wt, "(kg|g|lb|oz)")))
+  meas <- as.numeric(unlist(strsplit(wt, "(kg|g|lb|lbs|oz)")))
   unit <- unlist(strsplit(wt, "[0-9.]+"))
   unit <- unit[-1]
   if (length(unit) == 0) {
@@ -69,6 +68,7 @@ convert_weight <- function(wt) {
   } else {
     result <- switch(unit[1],
                 "lb" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
+                "lbs" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
                 "oz" = meas[1] * 0.028,
                 "g" = meas[1] / 1000,
                 "kg" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 1000, 0),

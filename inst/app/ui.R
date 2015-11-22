@@ -66,7 +66,15 @@ uibody <- shinydashboard::dashboardBody(
                     column(width = 6, shinyjs::disabled(textInput("aged", label = "Age (days)", value = ""))),
                     column(width = 6, shinyjs::disabled(textInput("agey", label = "Age (years)", value = "")))
                   ),
-                  radioButtons("SEX", label = "Sex", choices = list("Male" = "M", "Female" = "F"), inline = TRUE)
+                  radioButtons("SEX", label = "Sex", choices = list("Male" = "M", "Female" = "F"), inline = TRUE),
+                  fluidRow(
+                    column(width = 6, textInput("length_raw", "Length", value = "")),
+                    column(width = 6, shinyjs::disabled(numericInput("length", "(meters)", value = NA)))
+                  ),
+                  fluidRow(
+                    column(width = 6, textInput("weight_raw", "Weight", value = "")),
+                    column(width = 6, shinyjs::disabled(numericInput("weight", "(kilograms)", value = NA)))
+                  )
               ),
               shinydashboard::tabBox(title = tagList(icon("arrows-h"), "Measurements"), id = "mtabs",
                 tabPanel("Femur",
