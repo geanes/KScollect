@@ -143,8 +143,70 @@ uibody <- shinydashboard::dashboardBody(
                         )
               ),
               shinydashboard::tabBox(title = "Dentition", id = "dentabs",
-                tabPanel("Maxillary"),
-                tabPanel("Mandibular")
+                tabPanel("Maxillary",
+                  fluidRow(
+                    column(width = 2,
+                      numericInput("max_LM3", "Left M3", value = NA, min = 1, max = 13),
+                      numericInput("max_LM2", "Left M2", value = NA, min = 1, max = 13),
+                      numericInput("max_LM1", "Left M1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("max_RM3", "Right M3", value = NA, min = 1, max = 13),
+                      numericInput("max_RM2", "Right M2", value = NA, min = 1, max = 13),
+                      numericInput("max_RM1", "Right M1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("max_LPM2", "Left PM2", value = NA, min = 1, max = 13),
+                      numericInput("max_LPM1", "Left PM1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("max_RM2", "Right PM2", value = NA, min = 1, max = 13),
+                      numericInput("max_RM1", "Right PM1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("max_LC", "Left C", value = NA, min = 1, max = 13),
+                      numericInput("max_LI2", "Left I2", value = NA, min = 1, max = 13),
+                      numericInput("max_LI1", "Left I1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("max_RC", "Right C", value = NA, min = 1, max = 13),
+                      numericInput("max_RI2", "Right I2", value = NA, min = 1, max = 13),
+                      numericInput("max_RI1", "Right I1", value = NA, min = 1, max = 13)
+                    )
+                  )
+                ),
+                tabPanel("Mandibular",
+                  fluidRow(
+                    column(width = 2,
+                      numericInput("man_LM3", "Left M3", value = NA, min = 1, max = 13),
+                      numericInput("man_LM2", "Left M2", value = NA, min = 1, max = 13),
+                      numericInput("man_LM1", "Left M1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("man_RM3", "Right M3", value = NA, min = 1, max = 13),
+                      numericInput("man_RM2", "Right M2", value = NA, min = 1, max = 13),
+                      numericInput("man_RM1", "Right M1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("man_LPM2", "Left PM2", value = NA, min = 1, max = 13),
+                      numericInput("man_LPM1", "Left PM1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("man_RM2", "Right PM2", value = NA, min = 1, max = 13),
+                      numericInput("man_RM1", "Right PM1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("man_LC", "Left C", value = NA, min = 1, max = 13),
+                      numericInput("man_LI2", "Left I2", value = NA, min = 1, max = 13),
+                      numericInput("man_LI1", "Left I1", value = NA, min = 1, max = 13)
+                    ),
+                    column(width = 2,
+                      numericInput("man_RC", "Right C", value = NA, min = 1, max = 13),
+                      numericInput("man_RI2", "Right I2", value = NA, min = 1, max = 13),
+                      numericInput("man_RI1", "Right I1", value = NA, min = 1, max = 13)
+                    )
+                  )
+                )
               ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
