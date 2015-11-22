@@ -5,7 +5,7 @@ GetTableMetadata <- function() {
   result <- list(
     uid = c(label = "UID", value = "", type = "character"),
     medrec = c(label = "Medical Record", value = "", type = "character"),
-    SEX = c(label = "Sex", value = "M", type = "factor", levels = "F, M"),
+    SEX = c(label = "Sex", value = "M", type = "factor", levels = "F, M", ordered = FALSE),
     height_raw = c(label = "Height (raw)", value = "", type = "character"),
     height = c(label = "Height", value = "", type = "numeric"),
     weight_raw = c(label = "Weight (raw)", value = "", type = "character"),
@@ -40,7 +40,41 @@ GetTableMetadata <- function() {
     RDB = c(label = "RDB", value = NA, type = "numeric"),
     # ulna
     UDL = c(label = "UDL", value = NA, type = "numeric"),
-    UMSB = c(label = "UMSB", value = NA, type = "numeric")
+    UMSB = c(label = "UMSB", value = NA, type = "numeric"),
+    # dentition maxillary
+    max_LM1 = c(label = "max_LM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RM1 = c(label = "max_RM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LM2 = c(label = "max_LM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RM2 = c(label = "max_RM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LM3 = c(label = "max_LM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RM3 = c(label = "max_RM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LPM1 = c(label = "max_LPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RPM1 = c(label = "max_RPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LPM2 = c(label = "max_LPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RPM2 = c(label = "max_RPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LC = c(label = "max_LC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RC = c(label = "max_RC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LI1 = c(label = "max_LI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RI1 = c(label = "max_RI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_LI2 = c(label = "max_LI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_RI2 = c(label = "max_RI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    # dentition mandibular
+    man_LM1 = c(label = "man_LM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM1 = c(label = "man_RM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LM2 = c(label = "man_LM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM2 = c(label = "man_RM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LM3 = c(label = "man_LM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM3 = c(label = "man_RM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LPM1 = c(label = "man_LPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RPM1 = c(label = "man_RPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LPM2 = c(label = "man_LPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RPM2 = c(label = "man_RPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LC = c(label = "man_LC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RC = c(label = "man_RC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LI1 = c(label = "man_LI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RI1 = c(label = "man_RI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LI2 = c(label = "man_LI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RI2 = c(label = "man_RI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE)
   )
   return(result)
 }

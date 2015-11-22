@@ -18,7 +18,10 @@ as.table_type <- function(name, x = GetTableMetadata()[[name]][["value"]]) {
          "logical" = return(as.logical(x)),
          "integer" = return(as.integer(x)),
          "numeric" = return(as.numeric(x)),
-         "factor" = return(factor(x, levels = trimws(unlist(strsplit(GetTableMetadata()[[name]][["levels"]], ","))))),
+         "factor" = return(factor(x,
+                                  levels = trimws(unlist(strsplit(GetTableMetadata()[[name]][["levels"]], ","))),
+                                  ordered = GetTableMetadata()[[name]][["ordered"]])
+                          ),
          "date" = return(as.Date(x)),
          return(x)
   )
