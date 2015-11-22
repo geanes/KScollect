@@ -1,7 +1,7 @@
 Package: kidnapr
 Tyoe: Package
 Title: Purpose-built app for collecting data for future inclusion in KidStats.
-Version: 0.0.0.9004
+Version: 0.0.0.9005
 Date: 2015-11-12
 Authors@R: c(
     person("Glenn", "Eanes", email = "glenn.eanes@gmail.com", role = "cre"),
@@ -28,6 +28,7 @@ Suggests:
     knitr
 RoxygenNote: 5.0.0
 Collate:
+    'model.R'
     'crud.R'
     'helpers.R'
     'kidnapr.R'
