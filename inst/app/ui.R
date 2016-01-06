@@ -19,6 +19,9 @@ uisidebar <- shinydashboard::dashboardSidebar(
   textInput("location", label = labelMandatory("Location"), value = ""),
   span(shinyjs::disabled(actionLink("recent", icon = icon("bolt"), label = "Recent")), style = "margin-left: 20px"),
   br(), br(),
+  span(shinyFiles::shinyFilesButton("chooseDB", label = "Choose file", "Choose records file", multiple = FALSE),
+  shinyFiles::shinySaveButton("makeDB", label = "New file", "New records file", filetype = c("rds", "Rdata")), style = "margin-left: 20px"),
+  br(), br(),
   shinydashboard::sidebarMenu(
     shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit")),
     shinydashboard::menuItem("About", tabName = "about", icon = icon("info-circle"))
@@ -56,8 +59,8 @@ uibody <- shinydashboard::dashboardBody(
               )
             ),
             fluidRow(
-              shinydashboard::box(id = "medinfo", title = tagList(icon("user-md"), "Medical Information"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
-                  textInput("medrec", label = labelMandatory("Medical record"), value = ""),
+              shinydashboard::box(id = "medinfo", title = tagList(icon("user-md"), "Medical Record"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
+                  textInput("medrec", label = labelMandatory("Record number"), value = ""),
                   fluidRow(
                     column(width = 6, dateInput("birth", label = "Birth date", startview = "year")),
                     column(width = 6, dateInput("image", label = "Image date", startview = "year"))

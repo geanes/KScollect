@@ -19,6 +19,7 @@ VignetteBuilder: knitr
 Imports:
     shiny,
     shinydashboard,
+    shinyFiles,
     shinyjs,
     DT,
     purrr,
@@ -26,7 +27,7 @@ Imports:
     digest
 Suggests:
     knitr
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1
 Collate:
     'model.R'
     'crud.R'

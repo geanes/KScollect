@@ -97,6 +97,10 @@ server <- function(input, output, session) {
     return(data)
   })
 
+  # get/create input file
+  shinyFiles::shinyFileChoose(input, "chooseDB", roots = c(home = "~"), session = session)
+  shinyFiles::shinyFileSave(input, "makeDB", roots = c(home = "~"), session = session)
+
   # watch for filling of mandatory fields
   observe({
     # check if all mandatory fields have a value
