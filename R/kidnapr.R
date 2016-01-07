@@ -7,7 +7,7 @@
 #' @name kidnapr
 NULL
 
-#' @import shiny
+#' @import shiny shinyFiles
 NULL
 
 #' KidnapR shiny app call
@@ -15,5 +15,6 @@ NULL
 #' kidnapr()
 #' @export
 kidnapr <- function(){
+  library(shinyFiles)
   shiny::runApp(system.file('app', package = 'kidnapr'), launch.browser = TRUE)
 }

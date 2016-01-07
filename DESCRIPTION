@@ -11,24 +11,24 @@ Description: A shiny application which streamlines data collection for analysis
 Encoding: UTF-8
 URL: https://github.com/geanes/kidnapr
 BugReports: https://github.com/geanes/kidnapr/issues
-Depends:
+Depends: 
     R (>= 3.2.2)
 License: GPL-3
 LazyData: true
 VignetteBuilder: knitr
-Imports:
+Imports: 
     shiny,
     shinydashboard,
-    shinyFiles,
     shinyjs,
     DT,
     purrr,
     lubridate,
-    digest
-Suggests:
+    digest,
+    shinyFiles
+Suggests: 
     knitr
 RoxygenNote: 5.0.1
-Collate:
+Collate: 
     'model.R'
     'crud.R'
     'helpers.R'

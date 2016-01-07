@@ -98,8 +98,15 @@ server <- function(input, output, session) {
   })
 
   # get/create input file
-  shinyFiles::shinyFileChoose(input, "chooseDB", roots = c(home = "~"), session = session)
-  shinyFiles::shinyFileSave(input, "makeDB", roots = c(home = "~"), session = session)
+  root <- c(home = "~")
+  shinyFiles::shinyFileSave(input, "newFile", roots = root, session = session)
+  shinyFiles::shinyFileChoose(input, "openFile", roots = root, session = session)
+  output$newPath <- renderUI({
+    h6(shinyFiles::parseSavePath(root, input$newFile)$datapath)
+  })
+  output$openPath <- renderUI({
+    h6(shinyFiles::parseFilePaths(root, input$openFile)$datapath)
+  })
 
   # watch for filling of mandatory fields
   observe({

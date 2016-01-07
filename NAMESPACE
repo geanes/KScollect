@@ -2,3 +2,4 @@
 
 export(kidnapr)
 import(shiny)
+import(shinyFiles)

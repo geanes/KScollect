@@ -19,8 +19,12 @@ uisidebar <- shinydashboard::dashboardSidebar(
   textInput("location", label = labelMandatory("Location"), value = ""),
   span(shinyjs::disabled(actionLink("recent", icon = icon("bolt"), label = "Recent")), style = "margin-left: 20px"),
   br(), br(),
-  span(shinyFiles::shinyFilesButton("chooseDB", label = "Choose file", "Choose records file", multiple = FALSE),
-  shinyFiles::shinySaveButton("makeDB", label = "New file", "New records file", filetype = c("rds", "Rdata")), style = "margin-left: 20px"),
+  span(
+    shinyFiles::shinySaveButton("newFile", label = "New file", title = "New file", filetype = list(data = "rds")),
+    shinyFiles::shinyFilesButton("openFile", label = "Open file", title = "Choose file", multiple = FALSE),
+  style = "margin-left: 20px"),
+  htmlOutput("newPath", style = "margin-left: 20px"),
+  htmlOutput("openPath", style = "margin-left: 20px"),
   br(), br(),
   shinydashboard::sidebarMenu(
     shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit")),
