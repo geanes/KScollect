@@ -108,11 +108,10 @@ server <- function(input, output, session) {
   output$filePath <- renderUI({
     h6(filePath())
   })
-  observeEvent(filePath(), {
+  infile <- eventReactive(filePath(), {
     path <- as.character(isolate(filePath()))
     if (length(path) > 0) {
       responses <<- readRDS(file = path)
-      ShowData()
     }
   })
 
@@ -196,6 +195,7 @@ server <- function(input, output, session) {
 
   # display table
   output$responses <- DT::renderDataTable({
+    infile()
     #update after submit is clicked
     input$submit
     #update after delete is clicked
