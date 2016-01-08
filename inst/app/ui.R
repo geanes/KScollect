@@ -20,11 +20,10 @@ uisidebar <- shinydashboard::dashboardSidebar(
   span(shinyjs::disabled(actionLink("recent", icon = icon("bolt"), label = "Recent")), style = "margin-left: 20px"),
   br(), br(),
   span(
-    shinyFiles::shinySaveButton("newFile", label = "New file", title = "New file", filetype = list(data = "rds")),
-    shinyFiles::shinyFilesButton("openFile", label = "Open file", title = "Choose file", multiple = FALSE),
+    shinyFiles::shinySaveButton("saveFile", label = "Choose data file", title = "Choose data file", filetype = list(data = "rds")),
+    # shinyFiles::shinyFilesButton("chooseFile", label = "Open file", title = "Choose file", multiple = FALSE),
   style = "margin-left: 20px"),
-  htmlOutput("newPath", style = "margin-left: 20px"),
-  htmlOutput("openPath", style = "margin-left: 20px"),
+  htmlOutput("filePath", style = "margin-left: 20px"),
   br(), br(),
   shinydashboard::sidebarMenu(
     shinydashboard::menuItem("Edit Records", tabName = "edit", icon = icon("edit")),

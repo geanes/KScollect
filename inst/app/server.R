@@ -99,13 +99,21 @@ server <- function(input, output, session) {
 
   # get/create input file
   root <- c(home = "~")
-  shinyFiles::shinyFileSave(input, "newFile", roots = root, session = session)
-  shinyFiles::shinyFileChoose(input, "openFile", roots = root, session = session)
-  output$newPath <- renderUI({
-    h6(shinyFiles::parseSavePath(root, input$newFile)$datapath)
+  shinyFiles::shinyFileSave(input, "saveFile", roots = root, session = session)
+  # shinyFiles::shinyFileChoose(input, "chooseFile", roots = root, session = session)
+  filePath <- reactive({
+    shinyFiles::parseSavePath(root, input$saveFile)$datapath
+    # shinyFiles::parseFilePaths(root, input$chooseFile)$datapath
   })
-  output$openPath <- renderUI({
-    h6(shinyFiles::parseFilePaths(root, input$openFile)$datapath)
+  output$filePath <- renderUI({
+    h6(filePath())
+  })
+  observeEvent(filePath(), {
+    path <- as.character(isolate(filePath()))
+    if (length(path) > 0) {
+      responses <<- readRDS(file = path)
+      ShowData()
+    }
   })
 
   # watch for filling of mandatory fields
@@ -208,6 +216,14 @@ server <- function(input, output, session) {
      colnames = GetTableLabels(GetTableMetadata()[show()])
   )
 
-  session$onSessionEnded(function(){stopApp("Thank you for using KidnapR.")})
+  session$onSessionEnded(function() {
+    path <- as.character(isolate(filePath()))
+    if (length(path) > 0 && !identical(readRDS(path), responses)) {
+      saveRDS(responses, path)
+      msg <- paste0("Data saved to: ", path)
+      print(msg)
+    }
+    stopApp("Thank you for using KidnapR.")
+  })
 
 }

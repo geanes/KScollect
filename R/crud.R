@@ -1,5 +1,22 @@
 ## crud.R ##
 
+############## FILE OPERATIONS ################
+# responses <- NA
+
+saveFile <- function(obj = responses, path) {
+  con <- gzfile(path)
+  saveRDS(obj, con)
+  close(con)
+}
+
+readFile <- function(path) {
+  con <- gzfile(path)
+  result <- readRDS(con)
+  close(con)
+  return(result)
+}
+###############################################
+
 # Set table key
 key <- function() "uid"
 # Set which columns to show in DT
@@ -63,7 +80,7 @@ ReadData <- function() {
 
 ### SHOW ###
 ShowData <- function() {
-  if (exists("responses")) {
+  if (exists("responses") && !is.na(responses)) {
     result <- responses[, show()]
     return(result)
   }
