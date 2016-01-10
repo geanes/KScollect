@@ -1,16 +1,14 @@
 ## crud.R ##
 
 ############## FILE OPERATIONS ################
-# responses <- NA
-
-saveFile <- function(obj = responses, path) {
+saveFile <- function(obj = .responses, path) {
   con <- gzfile(path)
   saveRDS(obj, con)
   close(con)
 }
 
-readFile <- function(path) {
-  con <- gzfile(path)
+readFile <- function(file) {
+  con <- gzfile(file)
   result <- readRDS(con)
   close(con)
   return(result)
@@ -63,25 +61,26 @@ CastData <- function(data) {
 CreateData <- function(data) {
   data <- CastData(data)
   data[[key()]] <- UIDgen(paste(data[["collector"]], data[["location"]]))
-  if (exists("responses")) {
-    responses <<- rbind(responses, data)
+  if (exists(".responses")) {
+    .responses <<- rbind(.responses, data)
   } else {
-    responses <<- data
+    .responses <<- data
   }
 }
 
 ### READ ###
 ReadData <- function() {
-  if (exists("responses")) {
-    result <- responses
+  if (exists(".responses")) {
+    result <- .responses
   }
   return(result)
 }
 
 ### SHOW ###
 ShowData <- function() {
-  if (exists("responses") && !is.na(responses)) {
-    result <- responses[, show()]
+  # if (exists(".responses") && !is.na(.responses)) {
+  if (exists(".responses") && length(.responses) > 0) {
+    result <- .responses[, show()]
     return(result)
   }
 }
@@ -89,10 +88,10 @@ ShowData <- function() {
 ### UPDATE ###
 UpdateData <- function(data) {
   data <- CastData(data)
-  responses[responses[[key()]] == data[[key()]], ] <<- data
+  .responses[.responses[[key()]] == data[[key()]], ] <<- data
 }
 
 ### DELETE ###
 DeleteData <- function(data) {
-  responses <<- responses[responses[[key()]] != data[[key()]], ]
+  .responses <<- .responses[.responses[[key()]] != data[[key()]], ]
 }

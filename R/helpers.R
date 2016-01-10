@@ -28,8 +28,8 @@ date_age <- function(start, end) {
 
 # Recents
 recents <- function() {
-  result <- c(collector = responses[which(responses$tstamp == max(responses$tstamp)), "collector"],
-              location = responses[which(responses$tstamp == max(responses$tstamp)), "location"])
+  result <- c(collector = .responses[which(.responses$tstamp == max(.responses$tstamp)), "collector"],
+              location = .responses[which(.responses$tstamp == max(.responses$tstamp)), "location"])
   return(result)
 }
 

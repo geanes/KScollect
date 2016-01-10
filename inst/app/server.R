@@ -78,7 +78,6 @@ UpdateInputs <- function(data, session) {
 
 ## SHINY SERVER
 server <- function(input, output, session) {
-
   # input fields are treated as a group
   formData <- reactive({
     ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
@@ -100,10 +99,8 @@ server <- function(input, output, session) {
   # get/create input file
   root <- c(home = "~")
   shinyFiles::shinyFileSave(input, "saveFile", roots = root, session = session)
-  # shinyFiles::shinyFileChoose(input, "chooseFile", roots = root, session = session)
   filePath <- reactive({
     shinyFiles::parseSavePath(root, input$saveFile)$datapath
-    # shinyFiles::parseFilePaths(root, input$chooseFile)$datapath
   })
   output$filePath <- renderUI({
     h6(filePath())
@@ -111,7 +108,7 @@ server <- function(input, output, session) {
   infile <- eventReactive(filePath(), {
     path <- as.character(isolate(filePath()))
     if (length(path) > 0) {
-      responses <<- readRDS(file = path)
+      .responses <<- readFile(file = path)
     }
   })
 
@@ -129,7 +126,7 @@ server <- function(input, output, session) {
 
   # Click "Most recent" button
   observeEvent(input$recent, {
-    if (exists("responses") && length(responses) > 0) {
+    if (exists(".responses") && length(.responses) > 0) {
       last <- recents()
       updateTextInput(session, "collector", value = last[["collector"]])
       updateTextInput(session, "location", value = last[["location"]])
@@ -218,11 +215,12 @@ server <- function(input, output, session) {
 
   session$onSessionEnded(function() {
     path <- as.character(isolate(filePath()))
-    if (length(path) > 0 && !identical(readRDS(path), responses)) {
-      saveRDS(responses, path)
+    if (length(path) > 0 && !identical(readFile(path), .responses)) {
+      saveFile(.responses, path)
       msg <- paste0("Data saved to: ", path)
       print(msg)
     }
+    rm(.responses, inherits = TRUE)
     stopApp("Thank you for using KidnapR.")
   })
 

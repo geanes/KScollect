@@ -21,7 +21,6 @@ uisidebar <- shinydashboard::dashboardSidebar(
   br(), br(),
   span(
     shinyFiles::shinySaveButton("saveFile", label = "Choose data file", title = "Choose data file", filetype = list(data = "rds")),
-    # shinyFiles::shinyFilesButton("chooseFile", label = "Open file", title = "Choose file", multiple = FALSE),
   style = "margin-left: 20px"),
   htmlOutput("filePath", style = "margin-left: 20px"),
   br(), br(),
@@ -39,7 +38,6 @@ uibody <- shinydashboard::dashboardBody(
             fluidRow(
               shinydashboard::box(id = "records", title = tagList(icon("database"), "Records"), solidHeader = TRUE, status = "info", width = 12, collapsible = TRUE, collapsed = TRUE,
                   div(id = "rectable", DT::dataTableOutput("responses"))#,
-                  # span(id = "norec", h4("No records to display."))
               )
             ),
             fluidRow(
