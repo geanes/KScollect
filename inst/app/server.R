@@ -159,6 +159,8 @@ server <- function(input, output, session) {
       shinyjs::show(id = "error", anim = TRUE, animType = "fade")
     },
     finally = {
+      path <- as.character(isolate(filePath()))
+      saveFile(path, .responses)
       shinyjs::enable("submit")
       shinyjs::hide("submit_msg")
     })
@@ -176,6 +178,8 @@ server <- function(input, output, session) {
   observeEvent(input$delete, {
     DeleteData(formData())
     UpdateInputs(CreateDefaultRecord(), session)
+    path <- as.character(isolate(filePath()))
+    saveFile(path, .responses)
     shinyjs::text("submit", "<i class='fa fa-plus'></i> Add record")
     shinyjs::show(id = "delete_msg", anim = TRUE, animType = "fade")
     shinyjs::delay(2000, shinyjs::hide(id = "delete_msg", anim = TRUE, anuimType = "fade"))
@@ -217,12 +221,12 @@ server <- function(input, output, session) {
   )
 
   session$onSessionEnded(function() {
-    path <- as.character(isolate(filePath()))
-    if (length(path) > 0 && !identical(readFile(path), .responses)) {
-      saveFile(path, .responses)
-      msg <- paste0("Data saved to: ", path)
-      print(msg)
-    }
+    # path <- as.character(isolate(filePath()))
+    # if (length(path) > 0 && !identical(readFile(path), .responses)) {
+    #   saveFile(path, .responses)
+    #   msg <- paste0("Data saved to: ", path)
+    #   print(msg)
+    # }
     rm(.responses, inherits = TRUE)
     stopApp("Thank you for using KidnapR.")
   })
