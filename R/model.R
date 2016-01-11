@@ -23,6 +23,8 @@ GetTableMetadata <- function() {
     FDL = c(label = "FDL", value = NA, type = "numeric"),
     FMSB = c(label = "FMSB", value = NA, type = "numeric"),
     FDB = c(label = "FDB", value = NA, type = "numeric"),
+    FCB = c(label = "FCB", value = NA, type = "numeric"),
+    FIB = c(label = "FIB", value = NA, type = "numeric"),
     # tibia
     TDL = c(label = "TDL", value = NA, type = "numeric"),
     TPB = c(label = "TPB", value = NA, type = "numeric"),
@@ -35,6 +37,8 @@ GetTableMetadata <- function() {
     HPB = c(label = "HPB", value = NA, type = "numeric"),
     HMSB = c(label = "HMSB", value = NA, type = "numeric"),
     HDB = c(label = "HDB", value = NA, type = "numeric"),
+    HCB = c(label = "HCB", value = NA, type = "numeric"),
+    HIB = c(label = "HIB", value = NA, type = "numeric"),
     # radius
     RDL = c(label = "RDL", value = NA, type = "numeric"),
     RPB = c(label = "RPB", value = NA, type = "numeric"),

@@ -85,22 +85,26 @@ uibody <- shinydashboard::dashboardBody(
               shinydashboard::tabBox(title = "Long bones", id = "mtabs",
                 tabPanel("Femur",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                               numericInput("FDL", "Diaphysial length", value = NA)
                             ),
-                           column(width = 6,
+                           column(width = 4,
                               numericInput("FMSB", "Midshaft breadth", value = NA),
                               numericInput("FDB", "Distal breadth", value = NA)
+                           ),
+                           column(width = 4,
+                             numericInput("FCB", "Cortical breadth", value = NA),
+                             numericInput("FIB", "Intermedullary breadth", value = NA)
                            )
                           )
                         ),
                 tabPanel("Tibia",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                               numericInput("TDL", "Diaphysial length", value = NA),
                               numericInput("TPB", "Proximal Breadth", value = NA)
                             ),
-                            column(width = 6,
+                            column(width = 4,
                               numericInput("TMSB", "Midshaft breadth", value = NA),
                               numericInput("TDB", "Distal breadth", value = NA)
                             )
@@ -108,30 +112,34 @@ uibody <- shinydashboard::dashboardBody(
                         ),
                 tabPanel("Fibula",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("FBDL", "Diaphysial length", value = NA)
                             )
                           )
                         ),
                 tabPanel("Humerus",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("HDL", "Diaphysial length", value = NA),
                                    numericInput("HPB", "Proximal Breadth", value = NA)
                             ),
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("HMSB", "Midshaft breadth", value = NA),
                                    numericInput("HDB", "Distal breadth", value = NA)
+                            ),
+                            column(width = 4,
+                                   numericInput("HCB", "Cortical breadth", value = NA),
+                                   numericInput("HIB", "Intermedullary breadth", value = NA)
                             )
                           )
                         ),
                 tabPanel("Radius",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("RDL", "Diaphysial length", value = NA),
                                    numericInput("RPB", "Proximal Breadth", value = NA)
                             ),
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("RMSB", "Midshaft breadth", value = NA),
                                    numericInput("RDB", "Distal breadth", value = NA)
                             )
@@ -139,10 +147,10 @@ uibody <- shinydashboard::dashboardBody(
                         ),
                 tabPanel("Ulna",
                           fluidRow(
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("UDL", "Diaphysial length", value = NA)
                             ),
-                            column(width = 6,
+                            column(width = 4,
                                    numericInput("UMSB", "Midshaft Breadth", value = NA)
                             )
                           )
