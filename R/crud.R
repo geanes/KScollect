@@ -1,7 +1,7 @@
 ## crud.R ##
 
 ############## FILE OPERATIONS ################
-saveFile <- function(obj = .responses, path) {
+saveFile <- function(path, obj = data.frame()) {
   con <- gzfile(path)
   saveRDS(obj, con)
   close(con)
@@ -78,7 +78,6 @@ ReadData <- function() {
 
 ### SHOW ###
 ShowData <- function() {
-  # if (exists(".responses") && !is.na(.responses)) {
   if (exists(".responses") && length(.responses) > 0) {
     result <- .responses[, show()]
     return(result)

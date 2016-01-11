@@ -107,8 +107,11 @@ server <- function(input, output, session) {
   })
   infile <- eventReactive(filePath(), {
     path <- as.character(isolate(filePath()))
-    if (length(path) > 0) {
+    if (length(path) > 0 && file.exists(path)) {
       .responses <<- readFile(file = path)
+    } else if (length(path) > 0) {
+      .responses <<- data.frame()
+      saveFile(path, .responses)
     }
   })
 
@@ -216,7 +219,7 @@ server <- function(input, output, session) {
   session$onSessionEnded(function() {
     path <- as.character(isolate(filePath()))
     if (length(path) > 0 && !identical(readFile(path), .responses)) {
-      saveFile(.responses, path)
+      saveFile(path, .responses)
       msg <- paste0("Data saved to: ", path)
       print(msg)
     }
