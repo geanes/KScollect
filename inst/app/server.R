@@ -227,7 +227,9 @@ server <- function(input, output, session) {
     #   msg <- paste0("Data saved to: ", path)
     #   print(msg)
     # }
-    rm(.responses, inherits = TRUE)
+    if (exists(".responses")) {
+      rm(.responses, inherits = TRUE)
+    }
     stopApp("Thank you for using KidnapR.")
   })
 
