@@ -222,6 +222,29 @@ uibody <- shinydashboard::dashboardBody(
                   )
                 )
               ),
+              shinydashboard::tabBox(title = "Epiphyseal fusion", id = "eftabs", width = 8,
+                tabPanel("Femur",
+                  fluidRow()
+                ),
+                tabPanel("Tibia",
+                  fluidRow()
+                ),
+                tabPanel("Fibula",
+                         fluidRow()
+                ),
+                tabPanel("Humerus",
+                         fluidRow()
+                ),
+                tabPanel("Radius",
+                         fluidRow()
+                ),
+                tabPanel("Ulna",
+                         fluidRow()
+                ),
+                tabPanel("Other",
+                         fluidRow()
+                )
+              ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning", width = 4,
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
                   shinyjs::disabled(textInput("tstamp", label = "Timestamp", value = ""))
