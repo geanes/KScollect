@@ -1,4 +1,277 @@
-## server.R ##
+################################################################################
+####                          MODEL DEFINITION                              ####
+################################################################################
+
+# Get table metadata
+GetTableMetadata <- function() {
+  result <- list(
+    uid = c(label = "UID", value = "", type = "character"),
+    medrec = c(label = "Medical Record", value = "", type = "character"),
+    SEX = c(label = "Sex", value = "M", type = "factor", levels = "F, M", ordered = FALSE),
+    height_raw = c(label = "Height (raw)", value = "", type = "character"),
+    height = c(label = "Height", value = "", type = "numeric"),
+    weight_raw = c(label = "Weight (raw)", value = "", type = "character"),
+    weight = c(label = "Weight", value = "", type = "numeric"),
+    collector = c(label = "Collector", value = "", type = "character"),
+    location = c(label = "Location", value = "", type = "character"),
+    tstamp = c(label = "Timestamp", value = "", type = "character"),
+    birth = c(label = "Birth Date", value = as.character(Sys.Date()), type = "character"),
+    image = c(label = "Image Date", value = as.character(Sys.Date()), type = "character"),
+    aged = c(label = "Age (days)", value = NA, type = "integer"),
+    agey = c(label = "Age (years)", value = NA, type = "numeric"),
+    COD = c(label = "Cause of death", value = NA, type = "character"),
+    MOD = c(label = "Manner of death", value = NA, type = "chracter"),
+    # femur
+    FDL = c(label = "FDL", value = NA, type = "numeric"),
+    FMSB = c(label = "FMSB", value = NA, type = "numeric"),
+    FDB = c(label = "FDB", value = NA, type = "numeric"),
+    FCB = c(label = "FCB", value = NA, type = "numeric"),
+    FIB = c(label = "FIB", value = NA, type = "numeric"),
+    # tibia
+    TDL = c(label = "TDL", value = NA, type = "numeric"),
+    TPB = c(label = "TPB", value = NA, type = "numeric"),
+    TMSB = c(label = "TMSB", value = NA, type = "numeric"),
+    TDB = c(label = "TDB", value = NA, type = "numeric"),
+    # fibula
+    FBDL = c(label = "FBDL", value = NA, type = "numeric"),
+    # humerus
+    HDL = c(label = "HDL", value = NA, type = "numeric"),
+    HPB = c(label = "HPB", value = NA, type = "numeric"),
+    HMSB = c(label = "HMSB", value = NA, type = "numeric"),
+    HDB = c(label = "HDB", value = NA, type = "numeric"),
+    HCB = c(label = "HCB", value = NA, type = "numeric"),
+    HIB = c(label = "HIB", value = NA, type = "numeric"),
+    # radius
+    RDL = c(label = "RDL", value = NA, type = "numeric"),
+    RPB = c(label = "RPB", value = NA, type = "numeric"),
+    RMSB = c(label = "RMSB", value = NA, type = "numeric"),
+    RDB = c(label = "RDB", value = NA, type = "numeric"),
+    # ulna
+    UDL = c(label = "UDL", value = NA, type = "numeric"),
+    UMSB = c(label = "UMSB", value = NA, type = "numeric"),
+    # dentition maxillary
+    max_M1 = c(label = "max_M1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_M1_side = c(label = "max_M1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_M2 = c(label = "max_M2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_M2_side = c(label = "max_M2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_M3 = c(label = "max_M3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_M3_side = c(label = "max_M3_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_PM1 = c(label = "max_PM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_PM1_side = c(label = "max_PM1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_PM2 = c(label = "max_PM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_PM2_side = c(label = "max_PM2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_C = c(label = "max_C", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_C_side = c(label = "max_C_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_I1 = c(label = "max_I1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_I1_side = c(label = "max_I1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_I2 = c(label = "max_I2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    max_I2_side = c(label = "max_I2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    # dentition mandibular
+    man_LM1 = c(label = "man_LM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM1 = c(label = "man_RM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LM2 = c(label = "man_LM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM2 = c(label = "man_RM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LM3 = c(label = "man_LM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RM3 = c(label = "man_RM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LPM1 = c(label = "man_LPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RPM1 = c(label = "man_RPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LPM2 = c(label = "man_LPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RPM2 = c(label = "man_RPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LC = c(label = "man_LC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RC = c(label = "man_RC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LI1 = c(label = "man_LI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RI1 = c(label = "man_RI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_LI2 = c(label = "man_LI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_RI2 = c(label = "man_RI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE)
+  )
+  return(result)
+}
+
+################################################################################
+####                        CRUD OPERATIONS                                 ####
+################################################################################
+
+############## FILE OPERATIONS ################
+saveFile <- function(path, obj = data.frame()) {
+  con <- gzfile(path)
+  saveRDS(obj, con)
+  close(con)
+}
+
+readFile <- function(file) {
+  con <- gzfile(file)
+  result <- readRDS(con)
+  close(con)
+  return(result)
+}
+###############################################
+
+# Set table key
+key <- function() "uid"
+# Set which columns to show in DT
+show <- function() c("medrec", "SEX", "birth", "image", "tstamp", "collector", "location")
+
+# Get table labels
+GetTableLabels <- function(x = GetTableMetadata()) {
+  unname(purrr::map_chr(x, "label"))
+}
+
+# Convert input data to proper type
+as.table_type <- function(name, x = GetTableMetadata()[[name]][["value"]]) {
+  type <- GetTableMetadata()[[name]][["type"]]
+  switch(type,
+         "character" = return(as.character(x)),
+         "logical" = return(as.logical(x)),
+         "integer" = return(as.integer(x)),
+         "numeric" = return(as.numeric(x)),
+         "factor" = return(factor(x,
+                                  levels = trimws(unlist(strsplit(GetTableMetadata()[[name]][["levels"]], ","))),
+                                  ordered = GetTableMetadata()[[name]][["ordered"]])
+         ),
+         "date" = return(as.Date(x)),
+         return(x)
+  )
+}
+
+## DEFAULT/EMPTY RECORD ###
+CreateDefaultRecord <- function() {
+  default_record <- purrr::map(GetTableMetadata(), "value")
+  my_default <- CastData(default_record)
+  return(my_default)
+}
+
+# Cast from Inputs to a one-row data.frame
+CastData <- function(data) {
+  datar <- purrr::map2(names(data), data, as.table_type)
+  names(datar) <- names(data)
+  datar <- as.data.frame(datar, stringsAsFactors = FALSE)
+  return(datar)
+}
+
+### CREATE ###
+CreateData <- function(data) {
+  data <- CastData(data)
+  data[[key()]] <- UIDgen(paste(data[["collector"]], data[["location"]]))
+  if (exists(".responses")) {
+    .responses <<- rbind(.responses, data)
+  } else {
+    .responses <<- data
+  }
+}
+
+### READ ###
+ReadData <- function() {
+  if (exists(".responses")) {
+    result <- .responses
+  }
+  return(result)
+}
+
+### SHOW ###
+ShowData <- function() {
+  if (exists(".responses") && length(.responses) > 0) {
+    result <- .responses[, show()]
+    return(result)
+  }
+}
+
+### UPDATE ###
+UpdateData <- function(data) {
+  data <- CastData(data)
+  .responses[.responses[[key()]] == data[[key()]], ] <<- data
+}
+
+### DELETE ###
+DeleteData <- function(data) {
+  .responses <<- .responses[.responses[[key()]] != data[[key()]], ]
+}
+
+################################################################################
+####                          HELPER FUNCTIONS                              ####
+################################################################################
+
+# Time as integer
+epoch_time <- function() {
+  as.integer(Sys.time())
+}
+
+# Generate a unique hash for the UID field.
+UIDgen <- function(s) {
+  x <- paste(epoch_time(), s, sep = " ")
+  hash <- digest::digest(x, algo = "md5", serialize = FALSE)
+  return(hash)
+}
+
+# Human-readable timestamp
+human_time <- function() {
+  format(Sys.time(), "%Y-%m-%d %H:%M:%OS")
+}
+
+# Calculate ages from dates
+date_age <- function(start, end) {
+  if (start == "" || end == "") return(list(aged = NA, agey = NA))
+  age_days <- as.integer(lubridate::ymd(end) - lubridate::ymd(start))
+  age_years <- as.numeric(round(age_days/365, digits = 2))
+  result <- list(aged = age_days, agey = age_years)
+  return(result)
+}
+
+# Recents
+recents <- function() {
+  result <- c(collector = .responses[which(.responses$tstamp == max(.responses$tstamp)), "collector"],
+              location = .responses[which(.responses$tstamp == max(.responses$tstamp)), "location"])
+  return(result)
+}
+
+# Convert length
+convert_height <- function(height) {
+  hgt <- tolower(height)
+  hgt <- gsub(" ", "", hgt)
+  meas <- as.numeric(unlist(strsplit(hgt, "(m|cm|ft|in|\"|')")))
+  unit <- unlist(strsplit(hgt, "[0-9.]+"))
+  unit <- unit[-1]
+  if (length(unit) == 0) {
+    return(meas[1])
+  } else {
+    result <- switch(unit[1],
+                     "'" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
+                     "ft" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
+                     "\"" = meas[1] * 0.025,
+                     "in" = meas[1] * 0.025,
+                     "m" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 100, 0),
+                     "cm" = meas[1] / 100,
+                     NA
+    )
+    return(result)
+  }
+}
+
+# Convert weight
+convert_weight <- function(wt) {
+  wt <- tolower(wt)
+  wt <- gsub(" ", "", wt)
+  meas <- as.numeric(unlist(strsplit(wt, "(kg|g|lb|lbs|oz)")))
+  unit <- unlist(strsplit(wt, "[0-9.]+"))
+  unit <- unit[-1]
+  if (length(unit) == 0) {
+    return(meas[1])
+  } else {
+    result <- switch(unit[1],
+                     "lb" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
+                     "lbs" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
+                     "oz" = meas[1] * 0.028,
+                     "g" = meas[1] / 1000,
+                     "kg" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 1000, 0),
+                     NA
+    )
+    return(result)
+  }
+}
+
+
+################################################################################
+####                          SHINY SERVER                                  ####
+################################################################################
 
 # Mandatory fields list
 fieldsMandatory <- c("collector", "medrec", "location")
@@ -45,22 +318,22 @@ UpdateInputs <- function(data, session) {
   updateNumericInput(session, "UDL", value = data[["UDL"]])
   updateNumericInput(session, "UMSB", value = data[["UMSB"]])
   # dentition maxillary
-  updateNumericInput(session, "max_LM1", value = data[["max_LM1"]])
-  updateNumericInput(session, "max_RM1", value = data[["max_RM1"]])
-  updateNumericInput(session, "max_LM2", value = data[["max_LM2"]])
-  updateNumericInput(session, "max_RM2", value = data[["max_RM2"]])
-  updateNumericInput(session, "max_LM3", value = data[["max_LM3"]])
-  updateNumericInput(session, "max_RM3", value = data[["max_RM3"]])
-  updateNumericInput(session, "max_LPM1", value = data[["max_LPM1"]])
-  updateNumericInput(session, "max_RPM1", value = data[["max_RPM1"]])
-  updateNumericInput(session, "max_LPM2", value = data[["max_LPM2"]])
-  updateNumericInput(session, "max_RPM2", value = data[["max_RPM2"]])
-  updateNumericInput(session, "max_LC", value = data[["max_LC"]])
-  updateNumericInput(session, "max_RC", value = data[["max_RC"]])
-  updateNumericInput(session, "max_LI1", value = data[["max_LI1"]])
-  updateNumericInput(session, "max_RI1", value = data[["max_RI1"]])
-  updateNumericInput(session, "max_LI2", value = data[["max_LI2"]])
-  updateNumericInput(session, "max_RI2", value = data[["max_RI2"]])
+  updateNumericInput(session, "max_M1", value = data[["max_M1"]])
+  updateSelectInput(session, "max_M1_side", selected = data[["max_M1_side"]])
+  updateNumericInput(session, "max_M2", value = data[["max_M2"]])
+  updateSelectInput(session, "max_M2_side", selected = data[["max_M2_side"]])
+  updateNumericInput(session, "max_M3", value = data[["max_M3"]])
+  updateSelectInput(session, "max_M3_side", selected = data[["max_M3_side"]])
+  updateNumericInput(session, "max_PM1", value = data[["max_PM1"]])
+  updateSelectInput(session, "max_PM1_side", selected = data[["max_PM1_side"]])
+  updateNumericInput(session, "max_PM2", value = data[["max_PM2"]])
+  updateSelectInput(session, "max_PM2_side", selected = data[["max_PM2_side"]])
+  updateNumericInput(session, "max_C", value = data[["max_C"]])
+  updateSelectInput(session, "max_C_side", selected = data[["max_C_side"]])
+  updateNumericInput(session, "max_I1", value = data[["max_I1"]])
+  updateSelectInput(session, "max_I1_side", selected = data[["max_I1_side"]])
+  updateNumericInput(session, "max_I2", value = data[["max_I2"]])
+  updateSelectInput(session, "max_I2_side", selected = data[["max_I2_side"]])
   # dentition mandibular
   updateNumericInput(session, "man_LM1", value = data[["man_LM1"]])
   updateNumericInput(session, "man_RM1", value = data[["man_RM1"]])

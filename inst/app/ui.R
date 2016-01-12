@@ -60,7 +60,7 @@ uibody <- shinydashboard::dashboardBody(
               )
             ),
             fluidRow(
-              shinydashboard::box(id = "medinfo", title = tagList(icon("user-md"), "Medical Record"), solidHeader = TRUE, collapsible = TRUE, status = "primary",
+              shinydashboard::box(id = "medinfo", title = tagList(icon("user-md"), "Medical Record"), solidHeader = TRUE, collapsible = TRUE, status = "primary", width = 4,
                   textInput("medrec", label = labelMandatory("Record number"), value = ""),
                   fluidRow(
                     column(width = 6, dateInput("birth", label = "Birth date", startview = "year")),
@@ -82,7 +82,7 @@ uibody <- shinydashboard::dashboardBody(
                   textInput("COD", label = "Cause of death", value = ""),
                   textInput("MOD", label = "Manner of death", value = "")
               ),
-              shinydashboard::tabBox(title = "Long bones", id = "mtabs",
+              shinydashboard::tabBox(title = "Long bones", id = "mtabs", width = 8,
                 tabPanel("Femur",
                           fluidRow(
                             column(width = 4,
@@ -156,36 +156,36 @@ uibody <- shinydashboard::dashboardBody(
                           )
                         )
               ),
-              shinydashboard::tabBox(title = "Dentition", id = "dentabs",
+              shinydashboard::tabBox(title = "Dentition", id = "dentabs", width = 8,
                 tabPanel("Maxillary",
                   fluidRow(
                     column(width = 2,
-                      numericInput("max_LM3", "Left M3", value = NA, min = 1, max = 13),
-                      numericInput("max_LM2", "Left M2", value = NA, min = 1, max = 13),
-                      numericInput("max_LM1", "Left M1", value = NA, min = 1, max = 13)
+                      numericInput("max_M3", "Molar 3", value = NA, min = 1, max = 13),
+                      numericInput("max_M2", "Molar 2", value = NA, min = 1, max = 13),
+                      numericInput("max_M1", "Molar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("max_RM3", "Right M3", value = NA, min = 1, max = 13),
-                      numericInput("max_RM2", "Right M2", value = NA, min = 1, max = 13),
-                      numericInput("max_RM1", "Right M1", value = NA, min = 1, max = 13)
+                      selectInput("max_M3_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selected = NA, selectize = FALSE),
+                      selectInput("max_M2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
+                      selectInput("max_M1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
                     ),
                     column(width = 2,
-                      numericInput("max_LPM2", "Left PM2", value = NA, min = 1, max = 13),
-                      numericInput("max_LPM1", "Left PM1", value = NA, min = 1, max = 13)
+                      numericInput("max_PM2", "Premolar 2", value = NA, min = 1, max = 13),
+                      numericInput("max_PM1", "Premolar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("max_RM2", "Right PM2", value = NA, min = 1, max = 13),
-                      numericInput("max_RM1", "Right PM1", value = NA, min = 1, max = 13)
+                      selectInput("max_PM2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
+                      selectInput("max_PM1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
                     ),
                     column(width = 2,
-                      numericInput("max_LC", "Left C", value = NA, min = 1, max = 13),
-                      numericInput("max_LI2", "Left I2", value = NA, min = 1, max = 13),
-                      numericInput("max_LI1", "Left I1", value = NA, min = 1, max = 13)
+                      numericInput("max_C", "Canine", value = NA, min = 1, max = 13),
+                      numericInput("max_I2", "Incisor 2", value = NA, min = 1, max = 13),
+                      numericInput("max_I1", "Incisor 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("max_RC", "Right C", value = NA, min = 1, max = 13),
-                      numericInput("max_RI2", "Right I2", value = NA, min = 1, max = 13),
-                      numericInput("max_RI1", "Right I1", value = NA, min = 1, max = 13)
+                      selectInput("max_C_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
+                      selectInput("max_I2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
+                      selectInput("max_I1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
                     )
                   )
                 ),
@@ -222,7 +222,7 @@ uibody <- shinydashboard::dashboardBody(
                   )
                 )
               ),
-              shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning",
+              shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning", width = 4,
                   shinyjs::disabled(textInput("uid", label = "UID", value = "")),
                   shinyjs::disabled(textInput("tstamp", label = "Timestamp", value = ""))
               )

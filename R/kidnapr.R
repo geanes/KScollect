@@ -15,6 +15,7 @@ NULL
 #' kidnapr()
 #' @export
 kidnapr <- function(){
-  library(shinyFiles)
+  # library(shinyFiles)
+  requireNamespace("shinyFiles", quietly = TRUE)
   shiny::runApp(system.file('app', package = 'kidnapr'), launch.browser = TRUE)
 }
