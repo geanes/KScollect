@@ -165,17 +165,17 @@ uibody <- shinydashboard::dashboardBody(
                       numericInput("max_M1", "Molar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      selectInput("max_M3_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selected = NA, selectize = FALSE),
-                      selectInput("max_M2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
-                      selectInput("max_M1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
+                      selectInput("max_M3_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("max_M2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("max_M1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     ),
                     column(width = 2,
                       numericInput("max_PM2", "Premolar 2", value = NA, min = 1, max = 13),
                       numericInput("max_PM1", "Premolar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      selectInput("max_PM2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
-                      selectInput("max_PM1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
+                      selectInput("max_PM2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("max_PM1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     ),
                     column(width = 2,
                       numericInput("max_C", "Canine", value = NA, min = 1, max = 13),
@@ -183,41 +183,41 @@ uibody <- shinydashboard::dashboardBody(
                       numericInput("max_I1", "Incisor 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      selectInput("max_C_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
-                      selectInput("max_I2_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE),
-                      selectInput("max_I1_side", "side", choices = c(" " = NA, "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = FALSE)
+                      selectInput("max_C_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("max_I2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("max_I1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     )
                   )
                 ),
                 tabPanel("Mandibular",
                   fluidRow(
                     column(width = 2,
-                      numericInput("man_LM3", "Left M3", value = NA, min = 1, max = 13),
-                      numericInput("man_LM2", "Left M2", value = NA, min = 1, max = 13),
-                      numericInput("man_LM1", "Left M1", value = NA, min = 1, max = 13)
+                      numericInput("man_M3", "Molar 3", value = NA, min = 1, max = 13),
+                      numericInput("man_M2", "Molar 2", value = NA, min = 1, max = 13),
+                      numericInput("man_M1", "Molar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("man_RM3", "Right M3", value = NA, min = 1, max = 13),
-                      numericInput("man_RM2", "Right M2", value = NA, min = 1, max = 13),
-                      numericInput("man_RM1", "Right M1", value = NA, min = 1, max = 13)
+                      selectInput("man_M3_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("man_M2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("man_M1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     ),
                     column(width = 2,
-                      numericInput("man_LPM2", "Left PM2", value = NA, min = 1, max = 13),
-                      numericInput("man_LPM1", "Left PM1", value = NA, min = 1, max = 13)
+                      numericInput("man_PM2", "Premolar 2", value = NA, min = 1, max = 13),
+                      numericInput("man_PM1", "Premolar 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("man_RM2", "Right PM2", value = NA, min = 1, max = 13),
-                      numericInput("man_RM1", "Right PM1", value = NA, min = 1, max = 13)
+                      selectInput("man_PM2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("man_PM1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     ),
                     column(width = 2,
-                      numericInput("man_LC", "Left C", value = NA, min = 1, max = 13),
-                      numericInput("man_LI2", "Left I2", value = NA, min = 1, max = 13),
-                      numericInput("man_LI1", "Left I1", value = NA, min = 1, max = 13)
+                      numericInput("man_C", "Canine", value = NA, min = 1, max = 13),
+                      numericInput("man_I2", "Incisor 2", value = NA, min = 1, max = 13),
+                      numericInput("man_I1", "Incisor 1", value = NA, min = 1, max = 13)
                     ),
                     column(width = 2,
-                      numericInput("man_RC", "Right C", value = NA, min = 1, max = 13),
-                      numericInput("man_RI2", "Right I2", value = NA, min = 1, max = 13),
-                      numericInput("man_RI1", "Right I1", value = NA, min = 1, max = 13)
+                      selectInput("man_C_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("man_I2_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE),
+                      selectInput("man_I1_side", "side", choices = c(" " = "", "Mixed" = "M", "Left" = "L", "Right" = "R"), selectize = TRUE)
                     )
                   )
                 )

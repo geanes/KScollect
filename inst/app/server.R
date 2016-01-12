@@ -51,38 +51,39 @@ GetTableMetadata <- function() {
     UMSB = c(label = "UMSB", value = NA, type = "numeric"),
     # dentition maxillary
     max_M1 = c(label = "max_M1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_M1_side = c(label = "max_M1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_M1_side = c(label = "max_M1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_M2 = c(label = "max_M2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_M2_side = c(label = "max_M2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_M2_side = c(label = "max_M2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_M3 = c(label = "max_M3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_M3_side = c(label = "max_M3_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_M3_side = c(label = "max_M3_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_PM1 = c(label = "max_PM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_PM1_side = c(label = "max_PM1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_PM1_side = c(label = "max_PM1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_PM2 = c(label = "max_PM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_PM2_side = c(label = "max_PM2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_PM2_side = c(label = "max_PM2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_C = c(label = "max_C", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_C_side = c(label = "max_C_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_C_side = c(label = "max_C_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_I1 = c(label = "max_I1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_I1_side = c(label = "max_I1_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_I1_side = c(label = "max_I1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     max_I2 = c(label = "max_I2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    max_I2_side = c(label = "max_I2_side", value = NA, type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    max_I2_side = c(label = "max_I2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     # dentition mandibular
-    man_LM1 = c(label = "man_LM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RM1 = c(label = "man_RM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LM2 = c(label = "man_LM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RM2 = c(label = "man_RM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LM3 = c(label = "man_LM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RM3 = c(label = "man_RM3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LPM1 = c(label = "man_LPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RPM1 = c(label = "man_RPM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LPM2 = c(label = "man_LPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RPM2 = c(label = "man_RPM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LC = c(label = "man_LC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RC = c(label = "man_RC", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LI1 = c(label = "man_LI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RI1 = c(label = "man_RI1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_LI2 = c(label = "man_LI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_RI2 = c(label = "man_RI2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE)
+    man_M1 = c(label = "man_M1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_M1_side = c(label = "man_M1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_M2 = c(label = "man_M2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_M2_side = c(label = "man_M2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_M3 = c(label = "man_M3", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_M3_side = c(label = "man_M3_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_PM1 = c(label = "man_PM1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_PM1_side = c(label = "man_PM1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_PM2 = c(label = "man_PM2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_PM2_side = c(label = "man_PM2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_C = c(label = "man_C", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_C_side = c(label = "man_C_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_I1 = c(label = "man_I1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_I1_side = c(label = "man_I1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    man_I2 = c(label = "man_I2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
+    man_I2_side = c(label = "man_I2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE)
+    # epiphyseal fusion
   )
   return(result)
 }
@@ -91,7 +92,7 @@ GetTableMetadata <- function() {
 ####                        CRUD OPERATIONS                                 ####
 ################################################################################
 
-############## FILE OPERATIONS ################
+### FILE OPERATIONS ###
 saveFile <- function(path, obj = data.frame()) {
   con <- gzfile(path)
   saveRDS(obj, con)
@@ -104,7 +105,6 @@ readFile <- function(file) {
   close(con)
   return(result)
 }
-###############################################
 
 # Set table key
 key <- function() "uid"
@@ -133,7 +133,7 @@ as.table_type <- function(name, x = GetTableMetadata()[[name]][["value"]]) {
   )
 }
 
-## DEFAULT/EMPTY RECORD ###
+### DEFAULT/EMPTY RECORD ###
 CreateDefaultRecord <- function() {
   default_record <- purrr::map(GetTableMetadata(), "value")
   my_default <- CastData(default_record)
@@ -268,7 +268,6 @@ convert_weight <- function(wt) {
   }
 }
 
-
 ################################################################################
 ####                          SHINY SERVER                                  ####
 ################################################################################
@@ -319,38 +318,38 @@ UpdateInputs <- function(data, session) {
   updateNumericInput(session, "UMSB", value = data[["UMSB"]])
   # dentition maxillary
   updateNumericInput(session, "max_M1", value = data[["max_M1"]])
-  updateSelectInput(session, "max_M1_side", selected = data[["max_M1_side"]])
+  updateSelectInput(session, "max_M1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_M1_side"]]), ""))
   updateNumericInput(session, "max_M2", value = data[["max_M2"]])
-  updateSelectInput(session, "max_M2_side", selected = data[["max_M2_side"]])
+  updateSelectInput(session, "max_M2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_M2_side"]]), ""))
   updateNumericInput(session, "max_M3", value = data[["max_M3"]])
-  updateSelectInput(session, "max_M3_side", selected = data[["max_M3_side"]])
+  updateSelectInput(session, "max_M3_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_M3_side"]]), ""))
   updateNumericInput(session, "max_PM1", value = data[["max_PM1"]])
-  updateSelectInput(session, "max_PM1_side", selected = data[["max_PM1_side"]])
+  updateSelectInput(session, "max_PM1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_PM1_side"]]), ""))
   updateNumericInput(session, "max_PM2", value = data[["max_PM2"]])
-  updateSelectInput(session, "max_PM2_side", selected = data[["max_PM2_side"]])
+  updateSelectInput(session, "max_PM2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_PM2_side"]]), ""))
   updateNumericInput(session, "max_C", value = data[["max_C"]])
-  updateSelectInput(session, "max_C_side", selected = data[["max_C_side"]])
+  updateSelectInput(session, "max_C_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_C_side"]]), ""))
   updateNumericInput(session, "max_I1", value = data[["max_I1"]])
-  updateSelectInput(session, "max_I1_side", selected = data[["max_I1_side"]])
+  updateSelectInput(session, "max_I1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_I1_side"]]), ""))
   updateNumericInput(session, "max_I2", value = data[["max_I2"]])
-  updateSelectInput(session, "max_I2_side", selected = data[["max_I2_side"]])
+  updateSelectInput(session, "max_I2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["max_I2_side"]]), ""))
   # dentition mandibular
-  updateNumericInput(session, "man_LM1", value = data[["man_LM1"]])
-  updateNumericInput(session, "man_RM1", value = data[["man_RM1"]])
-  updateNumericInput(session, "man_LM2", value = data[["man_LM2"]])
-  updateNumericInput(session, "man_RM2", value = data[["man_RM2"]])
-  updateNumericInput(session, "man_LM3", value = data[["man_LM3"]])
-  updateNumericInput(session, "man_RM3", value = data[["man_RM3"]])
-  updateNumericInput(session, "man_LPM1", value = data[["man_LPM1"]])
-  updateNumericInput(session, "man_RPM1", value = data[["man_RPM1"]])
-  updateNumericInput(session, "man_LPM2", value = data[["man_LPM2"]])
-  updateNumericInput(session, "man_RPM2", value = data[["man_RPM2"]])
-  updateNumericInput(session, "man_LC", value = data[["man_LC"]])
-  updateNumericInput(session, "man_RC", value = data[["man_RC"]])
-  updateNumericInput(session, "man_LI1", value = data[["man_LI1"]])
-  updateNumericInput(session, "man_RI1", value = data[["man_RI1"]])
-  updateNumericInput(session, "man_LI2", value = data[["man_LI2"]])
-  updateNumericInput(session, "man_RI2", value = data[["man_RI2"]])
+  updateNumericInput(session, "man_M1", value = data[["man_M1"]])
+  updateSelectInput(session, "man_M1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_M1_side"]]), ""))
+  updateNumericInput(session, "man_M2", value = data[["man_M2"]])
+  updateSelectInput(session, "man_M2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_M2_side"]]), ""))
+  updateNumericInput(session, "man_M3", value = data[["man_M3"]])
+  updateSelectInput(session, "man_M3_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_M3_side"]]), ""))
+  updateNumericInput(session, "man_PM1", value = data[["man_PM1"]])
+  updateSelectInput(session, "man_PM1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_PM1_side"]]), ""))
+  updateNumericInput(session, "man_PM2", value = data[["man_PM2"]])
+  updateSelectInput(session, "man_PM2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_PM2_side"]]), ""))
+  updateNumericInput(session, "man_C", value = data[["man_C"]])
+  updateSelectInput(session, "man_C_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_C_side"]]), ""))
+  updateNumericInput(session, "man_I1", value = data[["man_I1"]])
+  updateSelectInput(session, "man_I1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_I1_side"]]), ""))
+  updateNumericInput(session, "man_I2", value = data[["man_I2"]])
+  updateSelectInput(session, "man_I2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_I2_side"]]), ""))
 }
 
 ## SHINY SERVER
