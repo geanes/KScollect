@@ -224,25 +224,89 @@ uibody <- shinydashboard::dashboardBody(
               ),
               shinydashboard::tabBox(title = "Epiphyseal fusion", id = "eftabs", width = 8,
                 tabPanel("Femur",
-                  fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("FH_EF", "Femoral head", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("FGT_EF", "Greater trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("FLT_EF", "Lesser trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("FDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Tibia",
-                  fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                      selectInput("TPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                      selectInput("TDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Fibula",
-                         fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("FBPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("FBDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Humerus",
-                         fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("HH_Oss", "Humeral head", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HGT_Oss", "Greater tubercle", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HLT_Oss", "Lesser tubercle", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("HPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("HC_Oss", "Capitulum", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HT_Oss", "Trochlea", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("HLE_Oss", "Lateral epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HME_EF", "Medial epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("HCE1_EF", "Composite epiphysis 1", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HCE2_EF", "Composite epiphysis 2", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Radius",
-                         fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("RPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("RDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Ulna",
-                         fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("UPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE),
+                           selectInput("UDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    )
+                  )
                 ),
                 tabPanel("Other",
-                         fluidRow()
+                  fluidRow(
+                    column(width = 3,
+                           selectInput("CT_EF", "Calcaneal tuberosity", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("CC_Oss", "Carpals (count)", choices = c(" " = "", 0:8), selectize = TRUE),
+                           selectInput("TC_Oss", "Tarsals (count)", choices = c(" " = "", 0:7), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("ISPR_EF", "Ischio-pubic ramus", choices = c(" " = "", "No union" = 0, "Partial union" = 1, "Complete union" = 2), selectize = TRUE),
+                           selectInput("ILIS_EF", "Ilium-ischium", choices = c(" " = "", "No union" = 0, "Partial union" = 1, "Complete union" = 2), selectize = TRUE)
+                    ),
+                    column(width = 3,
+                           selectInput("PC_Oss", "Patella", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE)
+                    )
+                  )
                 )
               ),
               shinydashboard::box(title = tagList(icon("cube"), "Metadata"), solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, status = "warning", width = 4,

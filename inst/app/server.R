@@ -21,6 +21,7 @@ GetTableMetadata <- function() {
     agey = c(label = "Age (years)", value = NA, type = "numeric"),
     COD = c(label = "Cause of death", value = NA, type = "character"),
     MOD = c(label = "Manner of death", value = NA, type = "chracter"),
+    ## long bone measurements
     # femur
     FDL = c(label = "FDL", value = NA, type = "numeric"),
     FMSB = c(label = "FMSB", value = NA, type = "numeric"),
@@ -49,6 +50,7 @@ GetTableMetadata <- function() {
     # ulna
     UDL = c(label = "UDL", value = NA, type = "numeric"),
     UMSB = c(label = "UMSB", value = NA, type = "numeric"),
+    ## dentition
     # dentition maxillary
     max_M1 = c(label = "max_M1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
     max_M1_side = c(label = "max_M1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
@@ -82,8 +84,44 @@ GetTableMetadata <- function() {
     man_I1 = c(label = "man_I1", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
     man_I1_side = c(label = "man_I1_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
     man_I2 = c(label = "man_I2", value = NA, type = "factor", levels = paste(1:13, collapse = ", "), ordered = TRUE),
-    man_I2_side = c(label = "man_I2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE)
-    # epiphyseal fusion
+    man_I2_side = c(label = "man_I2_side", value = "", type = "factor", levels = paste(c("M", "L", "R"), collapse = ", "), ordered = FALSE),
+    # epiphyseal fusion and ossification
+    # femur
+    FH_EF = c(label = "FH_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    FGT_EF = c(label = "FGT_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    FLT_EF = c(label = "FLT_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    FDE_EF = c(label = "FDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # tibia
+    TPE_EF = c(label = "TPE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    TDE_EF = c(label = "TDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # fibula
+    FBPE_EF = c(label = "FBPE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    FBDE_EF = c(label = "FBDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # humerus
+    HH_Oss = c(label = "HH_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HGT_Oss = c(label = "HGT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLT_Oss = c(label = "HLT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HPE_EF = c(label = "HPE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    HC_Oss = c(label = "HC_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HT_Oss = c(label = "HT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLE_Oss = c(label = "HLE_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE1_EF = c(label = "HCE1_EF", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE2_EF = c(label = "HCE2_EF", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HDE_EF = c(label = "HDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    HME_EF = c(label = "HME_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # radius
+    RPE_EF = c(label = "RPE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    RDE_EF = c(label = "RDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # ulna
+    UPE_EF = c(label = "UPE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    UDE_EF = c(label = "UDE_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    # other
+    CT_EF = c(label = "CT_EF", value = "", type = "factor", levels = paste(c(0:4), collapse = ", "), ordered = TRUE),
+    CC_Oss = c(label = "CC_Oss", value = "", type = "factor", levels = paste(c(0:8), collapse = ", "), ordered = TRUE),
+    TC_Oss = c(label = "TC_Oss", value = "", type = "factor", levels = paste(c(0:7), collapse = ", "), ordered = TRUE),
+    ISPR_EF = c(label = "ISPR_EF", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    ILIS_EF = c(label = "ILIS_EF", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    PC_Oss = c(label = "PC_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE)
   )
   return(result)
 }
@@ -350,6 +388,36 @@ UpdateInputs <- function(data, session) {
   updateSelectInput(session, "man_I1_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_I1_side"]]), ""))
   updateNumericInput(session, "man_I2", value = data[["man_I2"]])
   updateSelectInput(session, "man_I2_side", selected = ifelse(!is.na(data[["max_M1_side"]]), as.character(data[["man_I2_side"]]), ""))
+  # epiphyseal fusion and ossification
+  updateSelectInput(session, "FH_EF", selected = ifelse(!is.na(data[["FH_EF"]]), as.character(data[["FH_EF"]]), ""))
+  updateSelectInput(session, "FGT_EF", selected = ifelse(!is.na(data[["FGT_EF"]]), as.character(data[["FGT_EF"]]), ""))
+  updateSelectInput(session, "FLT_EF", selected = ifelse(!is.na(data[["FLT_EF"]]), as.character(data[["FLT_EF"]]), ""))
+  updateSelectInput(session, "FDE_EF", selected = ifelse(!is.na(data[["FDE_EF"]]), as.character(data[["FDE_EF"]]), ""))
+  updateSelectInput(session, "TPE_EF", selected = ifelse(!is.na(data[["TPE_EF"]]), as.character(data[["TPE_EF"]]), ""))
+  updateSelectInput(session, "TDE_EF", selected = ifelse(!is.na(data[["TDE_EF"]]), as.character(data[["TDE_EF"]]), ""))
+  updateSelectInput(session, "FBPE_EF", selected = ifelse(!is.na(data[["FBPE_EF"]]), as.character(data[["FBPE_EF"]]), ""))
+  updateSelectInput(session, "FBDE_EF", selected = ifelse(!is.na(data[["FBDE_EF"]]), as.character(data[["FBDE_EF"]]), ""))
+  updateSelectInput(session, "HH_Oss", selected = ifelse(!is.na(data[["HH_Oss"]]), as.character(data[["HH_Oss"]]), ""))
+  updateSelectInput(session, "HGT_Oss", selected = ifelse(!is.na(data[["HGT_Oss"]]), as.character(data[["HGT_Oss"]]), ""))
+  updateSelectInput(session, "HLT_Oss", selected = ifelse(!is.na(data[["HLT_Oss"]]), as.character(data[["HLT_Oss"]]), ""))
+  updateSelectInput(session, "HPE_EF", selected = ifelse(!is.na(data[["HPE_EF"]]), as.character(data[["HPE_EF"]]), ""))
+  updateSelectInput(session, "HC_Oss", selected = ifelse(!is.na(data[["HC_Oss"]]), as.character(data[["HC_Oss"]]), ""))
+  updateSelectInput(session, "HT_Oss", selected = ifelse(!is.na(data[["HT_Oss"]]), as.character(data[["HT_Oss"]]), ""))
+  updateSelectInput(session, "HLE_Oss", selected = ifelse(!is.na(data[["HLE_Oss"]]), as.character(data[["HLE_Oss"]]), ""))
+  updateSelectInput(session, "HCE1_EF", selected = ifelse(!is.na(data[["HCE1_EF"]]), as.character(data[["HCE1_EF"]]), ""))
+  updateSelectInput(session, "HCE2_EF", selected = ifelse(!is.na(data[["HCE2_EF"]]), as.character(data[["HCE2_EF"]]), ""))
+  updateSelectInput(session, "HDE_EF", selected = ifelse(!is.na(data[["HDE_EF"]]), as.character(data[["HDE_EF"]]), ""))
+  updateSelectInput(session, "HME_EF", selected = ifelse(!is.na(data[["HME_EF"]]), as.character(data[["HME_EF"]]), ""))
+  updateSelectInput(session, "RPE_EF", selected = ifelse(!is.na(data[["RPE_EF"]]), as.character(data[["RPE_EF"]]), ""))
+  updateSelectInput(session, "RDE_EF", selected = ifelse(!is.na(data[["RDE_EF"]]), as.character(data[["RDE_EF"]]), ""))
+  updateSelectInput(session, "UPE_EF", selected = ifelse(!is.na(data[["UPE_EF"]]), as.character(data[["UPE_EF"]]), ""))
+  updateSelectInput(session, "UDE_EF", selected = ifelse(!is.na(data[["UDE_EF"]]), as.character(data[["UDE_EF"]]), ""))
+  updateSelectInput(session, "CT_EF", selected = ifelse(!is.na(data[["CT_EF"]]), as.character(data[["CT_EF"]]), ""))
+  updateSelectInput(session, "CC_Oss", selected = ifelse(!is.na(data[["CC_Oss"]]), as.character(data[["CC_Oss"]]), ""))
+  updateSelectInput(session, "TC_Oss", selected = ifelse(!is.na(data[["TC_Oss"]]), as.character(data[["TC_Oss"]]), ""))
+  updateSelectInput(session, "ISPR_EF", selected = ifelse(!is.na(data[["ISPR_EF"]]), as.character(data[["ISPR_EF"]]), ""))
+  updateSelectInput(session, "ILIS_EF", selected = ifelse(!is.na(data[["ILIS_EF"]]), as.character(data[["ILIS_EF"]]), ""))
+  updateSelectInput(session, "PC_Oss", selected = ifelse(!is.na(data[["PC_Oss"]]), as.character(data[["PC_Oss"]]), ""))
 }
 
 ## SHINY SERVER
