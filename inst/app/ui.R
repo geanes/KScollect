@@ -268,8 +268,8 @@ uibody <- shinydashboard::dashboardBody(
                            selectInput("HME_EF", "Medial epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
                     ),
                     column(width = 3,
-                           selectInput("HCE1_EF", "Composite epiphysis 1", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
-                           selectInput("HCE2_EF", "Composite epiphysis 2", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE),
+                           selectInput("HCE1_EF", "Composite epiphysis 1", choices = c(" " = "", "Unfused" = 0, "Fusing/Fused" = 1), selectize = TRUE),
+                           selectInput("HCE2_EF", "Composite epiphysis 2", choices = c(" " = "", "Unfused" = 0, "Fusing/Fused" = 1), selectize = TRUE),
                            selectInput("HDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE)
                     )
                   )
