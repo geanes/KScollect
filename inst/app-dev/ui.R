@@ -3,9 +3,6 @@
 source("panel_medrec.R", local = TRUE)
 source("panel_records.R", local = TRUE)
 
-# Mandatory fields code
-appCSS <- ".mandatory_star { color: red; }"
-
 labelMandatory <- function(label) {
   tagList(
     label,
@@ -27,9 +24,10 @@ ui <- bootstrapPage(title = "KidnapR",
                       href = "sF/fileIcons.css")
             ),
   # set up shinyjs
-  shinyjs::useShinyjs(), shinyjs::inlineCSS(appCSS),
+  shinyjs::useShinyjs(),
   # include main.css
   includeCSS("www/styles/main.css"),
+  includeCSS("www/styles/styles.css"),
 
   # navbar partial
   includeHTML("www/_navbar.html"),
