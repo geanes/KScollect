@@ -1,5 +1,10 @@
 ## server.R ##
 
+source("model.R", local = TRUE)
+source("crud.R", local = TRUE)
+source("helpers.R", local = TRUE)
+source("update.R", local = TRUE)
+
 server <- function(input, output, session) {
   # input fields are treated as a group
   formData <- reactive({
@@ -15,7 +20,6 @@ server <- function(input, output, session) {
     data[["height"]] <- length
     data[["weight"]] <- weight
     data[["tstamp"]] <- human_time()
-    # print(data)
     return(data)
   })
 

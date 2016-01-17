@@ -1,15 +1,5 @@
 ## helpers.R ##
 
-# Mandatory fields code
-appCSS <- ".mandatory_star { color: red; }"
-
-labelMandatory <- function(label) {
-  tagList(
-    label,
-    span("*", class = "mandatory_star")
-  )
-}
-
 # Time as integer
 epoch_time <- function() {
   as.integer(Sys.time())
