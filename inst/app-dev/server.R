@@ -6,6 +6,7 @@ source("helpers.R", local = TRUE)
 source("update.R", local = TRUE)
 
 server <- function(input, output, session) {
+  shinyjs::disable("delete")
   # input fields are treated as a group
   formData <- reactive({
     ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))

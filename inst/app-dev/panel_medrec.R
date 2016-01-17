@@ -27,7 +27,7 @@ medrec_panel <- withTags({
                </div>'),
           # date inputs for birth and image
           fluidRow(
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div id="birth" class="shiny-date-input form-group shiny-input-container">
                    <label class="control-label" for="birth">Birth date</label>
                    <div class = "input-group">
@@ -38,7 +38,7 @@ medrec_panel <- withTags({
                    </div>
                    </div>')
             ),
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div id="image" class="shiny-date-input form-group shiny-input-container">
                    <label class="control-label" for="image">Image date</label>
                    <div class = "input-group">
@@ -52,13 +52,13 @@ medrec_panel <- withTags({
           ),
           # calculated age fields
           fluidRow(
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="aged">Age (days)</label>
                    <input id="aged" type="text" class="form-control" value="" readonly tabindex=-1 />
                    </div>')
             ),
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="agey">Age (years)</label>
                    <input id="agey" type="text" class="form-control" value="" readonly tabindex=-1/>
@@ -81,13 +81,13 @@ medrec_panel <- withTags({
                </div>'),
           # height fields
           fluidRow(
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="height_raw">Height</label>
                    <input id="height_raw" type="text" class="form-control" placeholder="Height" value="" tabindex=9 />
                    </div>')
             ),
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="height">(meters)</label>
                    <input id="height" type="text" class="form-control" value="" readonly tabindex=-1 />
@@ -96,13 +96,13 @@ medrec_panel <- withTags({
           ),
           # weight fields
           fluidRow(
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="weight_raw">Weight</label>
                    <input id="weight_raw" type="text" class="form-control" placeholder="Weight" value="" tabindex=10 />
                    </div>')
             ),
-            column(width = 6,
+            div(class = "col-xs-6",
               HTML('<div class="form-group shiny-input-container">
                    <label for="weight">(kilograms)</label>
                    <input id="weight" type="text" class="form-control" value="" readonly tabindex=-1 />

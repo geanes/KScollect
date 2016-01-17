@@ -1,6 +1,7 @@
 ## ui.R ##
 
 source("panel_medrec.R", local = TRUE)
+source("panel_records.R", local = TRUE)
 
 # Mandatory fields code
 appCSS <- ".mandatory_star { color: red; }"
@@ -18,7 +19,12 @@ ui <- bootstrapPage(title = "KidnapR",
                       href = "shared/font-awesome/css/font-awesome.min.css"),
             tags$link(rel = "stylesheet", type = "text/css",
                       href = "shared/datepicker/css/datepicker.css"),
-            tags$script(src = "shared/datepicker/js/bootstrap-datepicker.min.js")
+            tags$script(src = "shared/datepicker/js/bootstrap-datepicker.min.js"),
+            tags$script(src = "sF/shinyFiles.js"),
+            tags$link(rel = "stylesheet", type = "text/css",
+                      href = "sF/styles.css"),
+            tags$link(rel = "stylesheet", type = "text/css",
+                      href = "sF/fileIcons.css")
             ),
   # set up shinyjs
   shinyjs::useShinyjs(), shinyjs::inlineCSS(appCSS),
@@ -30,6 +36,7 @@ ui <- bootstrapPage(title = "KidnapR",
 
   # main content container
   tags$div(class = "container-fluid main-content", tags$div(class = "row",
+    records_panel,
     medrec_panel
   )),
 

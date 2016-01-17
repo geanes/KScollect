@@ -12,14 +12,34 @@
     </div>
     <!-- COLLAPSE CONTENT -->
     <div class="collapse navbar-collapse" id="kidnap-bar-content">
-      <ul class="nav navbar-nav">
+      <!-- <ul class="nav navbar-nav">
         <li class="active"><a href="#">Collect <span class="sr-only">(current)</span></a></li>
         <li><a href="#">About</a></li>
-      </ul>
+      </ul> -->
+
+      <div class="navbar-form navbar-left">
+        <div class="btn-group" role="group">
+          <button id="submit" style="width: 110px;" type="button" class="btn btn-default action-button">
+            <i class="fa fa-plus"></i> Add record</button>
+          <button id="reset" type="button" class="btn btn-default action-button">
+            <i class="fa fa-refresh"></i> Reset inputs</button>
+          <button class="btn btn-default action-button" id="delete" type="button">
+            <i class="fa fa-trash"></i> Delete record</button>
+        </div>
+      </div>
+      <div class="navbar-form navbar-left">
+        <button id="saveFile" type="button" class="shinySave btn btn-default" data-title="Choose data file"
+          data-filetype="[&#10; {&#10; &quot;name&quot;: &quot;data&quot;,&#10;&quot;ext&quot;: [ &quot;rds&quot; ] &#10;} &#10;]">
+          <i class="fa fa-crosshairs"></i> Choose file...</button>
+      </div>
+      <div class="navbar-form navbar-left">
+        <span id="filePath" class="shiny-html-output"></span>
+      </div>
+
       <form class="navbar-form navbar-right">
         <div class="form-group">
-          <div class="input-group">
-            <input type="text" name="collector" class="form-control" id="collector" placeholder="Collector name" tabindex="1" autofocus>
+          <div class="input-group shiny-input-container">
+            <input type="text" id="collector" class="form-control mandatory_star" placeholder="Collector name" tabindex="1" autofocus>
             <span class="input-group-btn">
               <button class="btn btn-default" type="button"><i class="fa fa-bolt fa-fw"></i></button>
             </span>
