@@ -16,18 +16,12 @@ medrec_panel <- withTags({
       # panel body
       div(class = "collapse in", id = "medrec-panel",
         div(class = "panel-body",
-          # record number text input
-          HTML('<div class="form-group shiny-input-container" style="width: 100%;">
-               <label for="medrec"> Record number <span class="mandatory_star">*</span></label>
-               <input id="medrec" type="text" class="form-control" value="" placeholder="Record #" tabindex=3 />
-               </div>'),
-          HTML('<div class="form-group shiny-input-container" style="width: 100%;">
-               <label for="location"> Location <span class="mandatory_star">*</span></label>
-               <input id="location" type="text" class="form-control" value="" placeholder="Hospital" tabindex=4 />
-               </div>'),
+          # record number and location text inputs
+          add_attribs(textInput("medrec", label = labelMandatory("Record number"), value = "", placeholder = "Record #", width = "100%"), tabindex = 3),
+          add_attribs(textInput("location", label = labelMandatory("Location"), value = "", placeholder = "Hospital", width = "100%"), tabindex = 4),
           # date inputs for birth and image
           fluidRow(
-            div(class = "col-xs-6",
+            column_xs(width = 6,
               HTML('<div id="birth" class="shiny-date-input form-group shiny-input-container">
                    <label class="control-label" for="birth">Birth date</label>
                    <div class = "input-group">
@@ -38,7 +32,7 @@ medrec_panel <- withTags({
                    </div>
                    </div>')
             ),
-            div(class = "col-xs-6",
+            column_xs(width = 6,
               HTML('<div id="image" class="shiny-date-input form-group shiny-input-container">
                    <label class="control-label" for="image">Image date</label>
                    <div class = "input-group">
@@ -52,17 +46,11 @@ medrec_panel <- withTags({
           ),
           # calculated age fields
           fluidRow(
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="aged">Age (days)</label>
-                   <input id="aged" type="text" class="form-control" value="" readonly tabindex=-1 />
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("aged", label = "Age (days)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
             ),
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="agey">Age (years)</label>
-                   <input id="agey" type="text" class="form-control" value="" readonly tabindex=-1/>
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("agey", label = "Age (years)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
             )
           ),
           # radio buttons for sex
@@ -81,43 +69,24 @@ medrec_panel <- withTags({
                </div>'),
           # height fields
           fluidRow(
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="height_raw">Height</label>
-                   <input id="height_raw" type="text" class="form-control" placeholder="Height" value="" tabindex=9 />
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("height_raw", "Height", value = "", placeholder = "Height", width = "100%"), tabindex = 9)
             ),
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="height">(meters)</label>
-                   <input id="height" type="text" class="form-control" value="" readonly tabindex=-1 />
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("height", "(meters)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
             )
           ),
           # weight fields
           fluidRow(
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="weight_raw">Weight</label>
-                   <input id="weight_raw" type="text" class="form-control" placeholder="Weight" value="" tabindex=10 />
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("weight_raw", "Weight", value = "", placeholder = "Weight", width = "100%"), tabindex = 10)
             ),
-            div(class = "col-xs-6",
-              HTML('<div class="form-group shiny-input-container">
-                   <label for="weight">(kilograms)</label>
-                   <input id="weight" type="text" class="form-control" value="" readonly tabindex=-1 />
-                   </div>')
+            column_xs(width = 6,
+              add_attribs(textInput("weight", "(kilograms)", value = NA, width = "100%"), tabindex = -1, readonly = "readonly")
             )
           ),
-          HTML('<div class="form-group shiny-input-container" style="width: 100%;">
-               <label for="COD">Cause of death</label>
-               <input id="COD" type="text" class="form-control" placeholder="COD" value="" tabindex=11 />
-               </div>'),
-          HTML('<div class="form-group shiny-input-container" style="width: 100%;">
-               <label for="MOD">Manner of death</label>
-               <input id="MOD" type="text" class="form-control" placeholder="MOD" value="" tabindex=12 />
-               </div>')
-
+          add_attribs(textInput("COD", label = "Cause of death", value = "", width = "100%", placeholder = "COD"), tabindex = 11),
+          add_attribs(textInput("MOD", label = "Manner of death", value = "", width = "100%", placeholder = "MOD"), tabindex = 12)
         )
 
       )

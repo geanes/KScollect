@@ -1,1 +1,1 @@
-addResourcePath("shinyjs", system.file("srcjs", package = "shinyjs"))
+source("ui_utils.R", local = TRUE)
