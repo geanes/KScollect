@@ -60,6 +60,11 @@ server <- function(input, output, session) {
     if (exists(".responses") && length(.responses) > 0) {
       last <- recents()
       updateTextInput(session, "collector", value = last[["collector"]])
+    }
+  })
+  observeEvent(input$recentLocation, {
+    if (exists(".responses") && length(.responses) > 0) {
+      last <- recents()
       updateTextInput(session, "location", value = last[["location"]])
     }
   })

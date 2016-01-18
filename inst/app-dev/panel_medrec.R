@@ -18,7 +18,16 @@ medrec_panel <- withTags({
         div(class = "panel-body",
           # record number and location text inputs
           add_attribs(textInput("medrec", label = labelMandatory("Record number"), value = "", placeholder = "Record #", width = "100%"), tabindex = 3),
-          add_attribs(textInput("location", label = labelMandatory("Location"), value = "", placeholder = "Hospital", width = "100%"), tabindex = 4),
+          div(class = "form-group",
+            label(`for` = "location", labelMandatory("Location")),
+            div(class = "input-group shiny-input-container",
+              input(type = "text", id = "location", class = "form-control", placeholder = "Hospital", tabindex = 4),
+              span(class = "input-group-btn",
+                button(id = "recentLocation", class = "btn btn-default action-button", type = "button", i(class = "fa fa-bolt fa-fw"))
+              )
+            )
+          ),
+          # add_attribs(textInput("location", label = labelMandatory("Location"), value = "", placeholder = "Hospital", width = "100%"), tabindex = 4),
           # date inputs for birth and image
           fluidRow(
             column_xs(width = 6,
