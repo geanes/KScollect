@@ -1,5 +1,12 @@
 ## crud.R ##
 
+# Set table key
+key <- function() "uid"
+# Set which columns to show in DT
+show <- function() c("medrec", "SEX", "birth", "image", "tstamp", "collector", "location")
+# Mandatory fields list
+fieldsMandatory <- c("collector", "medrec", "location")
+
 ### FILE OPERATIONS ###
 saveFile <- function(path, obj = data.frame()) {
   con <- gzfile(path)
@@ -13,13 +20,6 @@ readFile <- function(file) {
   close(con)
   return(result)
 }
-
-# Set table key
-key <- function() "uid"
-# Set which columns to show in DT
-show <- function() c("medrec", "SEX", "birth", "image", "tstamp", "collector", "location")
-# Mandatory fields list
-fieldsMandatory <- c("collector", "medrec", "location")
 
 # Get table labels
 GetTableLabels <- function(x = GetTableMetadata()) {

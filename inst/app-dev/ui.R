@@ -1,14 +1,16 @@
 ## ui.R ##
 
-source("panel_medrec.R", local = TRUE)
-source("panel_records.R", local = TRUE)
-
 labelMandatory <- function(label) {
   tagList(
     label,
     span("*", class = "mandatory_star")
   )
 }
+
+source("ui_utils.R", local = TRUE)
+source("panel_medrec.R", local = TRUE)
+source("panel_records.R", local = TRUE)
+source("panel_longbone.R", local = TRUE)
 
 ui <- bootstrapPage(title = "KidnapR",
   # include font-awesome, datepicker
@@ -35,7 +37,8 @@ ui <- bootstrapPage(title = "KidnapR",
   # main content container
   tags$div(class = "container-fluid main-content", tags$div(class = "row",
     records_panel,
-    medrec_panel
+    medrec_panel,
+    longbone_panel
   )),
 
   # footer partial
