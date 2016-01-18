@@ -1,7 +1,7 @@
 ## panel_medrec.R ##
 
 medrec_panel <- withTags({
-  div(class = "col-xs-12 col-sm-6 col-lg-4",
+  div(class = "col-xs-12 col-sm-6 col-md-4 col-lg-3",
     div(class = "panel panel-primary",
 
       # panel header
@@ -22,26 +22,10 @@ medrec_panel <- withTags({
           # date inputs for birth and image
           fluidRow(
             column_xs(width = 6,
-              HTML('<div id="birth" class="shiny-date-input form-group shiny-input-container">
-                   <label class="control-label" for="birth">Birth date</label>
-                   <div class = "input-group">
-                   <input type="text" class="form-control datepicker" placeholder="yyyy-mm-dd" data-initial-date data-date-language="en" data-date-weekstart="0" data-date-format="yyyy-mm-dd" data-date-start-view="year" data-date-end-date="0d" tabindex=5 />
-                   <span class="input-group-addon">
-                   <span class="fa fa-calendar"></span>
-                   </span>
-                   </div>
-                   </div>')
+              add_attribs(dateInput("birth", label = "Birth date", startview = "year", max = Sys.Date(), width = "100%"), tabindex = 5)
             ),
             column_xs(width = 6,
-              HTML('<div id="image" class="shiny-date-input form-group shiny-input-container">
-                   <label class="control-label" for="image">Image date</label>
-                   <div class = "input-group">
-                   <input type="text" class="form-control datepicker" placeholder="yyyy-mm-dd" data-initial-date data-date-language="en" data-date-weekstart="0" data-date-format="yyyy-mm-dd" data-date-start-view="year" data-date-end-date="0d" tabindex=6 />
-                   <span class="input-group-addon">
-                   <span class="fa fa-calendar"></span>
-                   </span>
-                   </div>
-                   </div>')
+              add_attribs(dateInput("image", label = "Image date", startview = "year", max = Sys.Date(), width = "100%"), tabindex = 6)
             )
           ),
           # calculated age fields

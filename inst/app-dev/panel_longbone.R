@@ -1,13 +1,13 @@
 ## panel_longbone.R ##
 
 longbone_panel <- withTags({
-  div(class = "col-xs-12 col-sm-6 col-lg-4",
+  div(class = "col-xs-12 col-sm-6 col-md-5 col-lg-4",
       div(class = "panel panel-primary",
 
           # panel header
           div(class = "panel-heading",
               a(href = "#longbone-panel", "data-toggle" = "collapse", tabindex = "13",
-                span(class = "badge pull-right", "0%"),
+                span(class = "badge pull-right", id = "longbone-badge", "0%"),
                 h3(class = "panel-title", "Long bones")
               )
           ),
@@ -16,7 +16,7 @@ longbone_panel <- withTags({
           div(class = "collapse", id = "longbone-panel",
               div(class = "panel-body",
                 fluidRow(
-                  column_xs(width = 4,
+                  column_xs(width = 5,
                     ul(class = "nav nav-pills nav-stacked", role = "tablist",
                       li(role = "presentation", class = "active",
                          a(href = "#humerus", role = "tab", `data-toggle` = "pill", tabindex = "14", "Humerus")
@@ -39,7 +39,7 @@ longbone_panel <- withTags({
                       )
                     )
                   ),
-                  column_xs(width = 8,
+                  column_xs(width = 7,
                     div(class = "tab-content",
                         div(role = "tabpanel", class = "tab-pane active fade in", id = "humerus",
                           add_attribs(numericInput("HDL", "Diaphysial length", value = NA, min = 0, width = "100%"), tabindex = 15),

@@ -11,6 +11,9 @@ source("ui_utils.R", local = TRUE)
 source("panel_medrec.R", local = TRUE)
 source("panel_records.R", local = TRUE)
 source("panel_longbone.R", local = TRUE)
+source("panel_dentition.R", local = TRUE)
+source("panel_fusion.R", local = TRUE)
+source("panel_metadata.R", local = TRUE)
 
 ui <- bootstrapPage(title = "KidnapR",
   # include font-awesome, datepicker
@@ -38,7 +41,10 @@ ui <- bootstrapPage(title = "KidnapR",
   tags$div(class = "container-fluid main-content", tags$div(class = "row",
     records_panel,
     medrec_panel,
-    longbone_panel
+    longbone_panel,
+    dentition_panel,
+    fusion_panel,
+    metadata_panel
   )),
 
   # footer partial
