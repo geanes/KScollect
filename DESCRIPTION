@@ -1,7 +1,7 @@
 Package: kidnapr
 Tyoe: Package
 Title: Purpose-built app for collecting data for future inclusion in KidStats.
-Version: 0.2.0.9000
+Version: 0.2.0.9001
 Date: 2015-11-12
 Authors@R: c(
     person("Glenn", "Eanes", email = "glenn.eanes@gmail.com", role = "cre"),
@@ -17,7 +17,7 @@ License: GPL-3
 LazyData: true
 VignetteBuilder: knitr
 Imports:
-    shiny,
+    shiny (>= 0.13.0),
     shinydashboard,
     shinyjs,
     DT,
