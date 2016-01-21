@@ -53,57 +53,57 @@ fusion_panel <- withTags({
                                         add_attribs(selectInput("HLT_Oss", "Lesser tubercle", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE), tabindex = 81, type = "select")
                                       ),
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("HPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 82, type = "select"),
+                                        add_attribs(selectInput("HPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 82, type = "select"),
                                         add_attribs(selectInput("HC_Oss", "Capitulum", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE), tabindex = 83, type = "select"),
                                         add_attribs(selectInput("HT_Oss", "Trochlea", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE), tabindex = 84, type = "select")
                                       ),
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
                                         add_attribs(selectInput("HLE_Oss", "Lateral epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE), tabindex = 85, type = "select"),
-                                        add_attribs(selectInput("HME_EF", "Medial epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 86, type = "select")
+                                        add_attribs(selectInput("HME_EF", "Medial epicondyle", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 86, type = "select")
                                       ),
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
                                         add_attribs(selectInput("HCE1_EF", "Composite epiphysis 1", choices = c(" " = "", "Unfused" = 0, "Fusing/Fused" = 1), selectize = TRUE), tabindex = 87, type = "select"),
                                         add_attribs(selectInput("HCE2_EF", "Composite epiphysis 2", choices = c(" " = "", "Unfused" = 0, "Fusing/Fused" = 1), selectize = TRUE), tabindex = 88, type = "select"),
-                                        add_attribs(selectInput("HDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 89, type = "select")
+                                        add_attribs(selectInput("HDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 89, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "radius-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("RPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 91, type = "select"),
-                                        add_attribs(selectInput("RDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 92, type = "select")
+                                        add_attribs(selectInput("RPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 91, type = "select"),
+                                        add_attribs(selectInput("RDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 92, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "ulna-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("UPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 94, type = "select"),
-                                        add_attribs(selectInput("UDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 95, type = "select")
+                                        add_attribs(selectInput("UPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 94, type = "select"),
+                                        add_attribs(selectInput("UDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 95, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "femur-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("FH_EF", "Femoral head", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 97, type = "select"),
-                                        add_attribs(selectInput("FGT_EF", "Greater trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 98, type = "select")
+                                        add_attribs(selectInput("FH_EF", "Femoral head", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 97, type = "select"),
+                                        add_attribs(selectInput("FGT_EF", "Greater trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 98, type = "select")
                                       ),
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("FLT_EF", "Lesser trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 99, type = "select"),
-                                        add_attribs(selectInput("FDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 100, type = "select")
+                                        add_attribs(selectInput("FLT_EF", "Lesser trochanter", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 99, type = "select"),
+                                        add_attribs(selectInput("FDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 100, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "tibia-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("TPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 102, type = "select"),
-                                        add_attribs(selectInput("TDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 103, type = "select")
+                                        add_attribs(selectInput("TPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 102, type = "select"),
+                                        add_attribs(selectInput("TDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 103, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "fibula-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("FBPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 105, type = "select"),
-                                        add_attribs(selectInput("FBDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 106, type = "select")
+                                        add_attribs(selectInput("FBPE_EF", "Proximal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 105, type = "select"),
+                                        add_attribs(selectInput("FBDE_EF", "Distal epiphysis", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 106, type = "select")
                                       )
                                   ),
                                   div(role = "tabpanel", class = "tab-pane fade", id = "other-ef",
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
-                                        add_attribs(selectInput("CT_EF", "Calcaneal tuberosity", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 108, type = "select")
+                                        add_attribs(selectInput("CT_EF", "Calcaneal tuberosity", choices = c(" " = "", "Absent" = 0, "Present" = 1, "Active union" = 2, "Active/Advanced union" = 23, "Advanced union" = 3, "Complete fusion" = 4), selectize = TRUE), tabindex = 108, type = "select")
                                       ),
                                       div(class = "col-xs-6 col-sm-4 col-md-3 col-lg-3",
                                         add_attribs(selectInput("CC_Oss", "Carpals (count)", choices = c(" " = "", 0:8), selectize = TRUE), tabindex = 109, type = "select"),
@@ -117,7 +117,6 @@ fusion_panel <- withTags({
                                         add_attribs(selectInput("PC_Oss", "Patella", choices = c(" " = "", "Absent" = 0, "Present" = 1), selectize = TRUE), tabindex = 113, type = "select")
                                       )
                                   )
-
 
                               )
                     )
