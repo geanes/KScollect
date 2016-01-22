@@ -9,19 +9,49 @@ server <- function(input, output, session) {
   shinyjs::disable("delete")
   # input fields are treated as a group
   formData <- reactive({
-    ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
-    length <- convert_height(input[["height_raw"]])
-    weight <- convert_weight(input[["weight_raw"]])
     data <- list()
     for (i in names(GetTableMetadata())) {
       data[[i]] <- input[[i]]
     }
-    data[["aged"]] <- ages[["aged"]]
-    data[["agey"]] <- ages[["agey"]]
-    data[["height"]] <- length
-    data[["weight"]] <- weight
+    if (input$COD == "") data[["COD"]] <- NA
+    if (input$MOD == "") data[["MOD"]] <- NA
+    if (input$height_raw == "") data[["height_raw"]] <- NA
+    if (input$weight_raw == "") data[["weight_raw"]] <- NA
+    if (input$birth == input$image) {
+      data[["birth"]] <- NA
+      data[["image"]] <- NA
+    }
     data[["tstamp"]] <- human_time()
     return(data)
+  })
+
+  # set date input range
+  observe({
+    updateDateInput(session, "birth", max = as.Date(input$image))
+    updateDateInput(session, "image", min = as.Date(input$birth))
+  })
+
+  # calculate age values
+  observeEvent(input$calcAged, {
+    shinyjs::toggleState("aged")
+  })
+  observe({
+    if (input$calcAged) {
+      ages <- date_age(as.character(input[["birth"]]), as.character(input[["image"]]))
+      updateTextInput(session, "aged", value = ages[["aged"]])
+      # updateTextInput(session, "agey", value = ages[["agey"]])
+    }
+  })
+  observe({
+      updateTextInput(session, "agey", value = round(as.integer(input$aged) / 365.25, digits = 2))
+  })
+
+  # calculate height and weight values
+  observe({
+    updateTextInput(session, "height", value = as.character(convert_height(input$height_raw)))
+  })
+  observe({
+    updateTextInput(session, "weight", value = as.character(convert_weight(input$weight_raw)))
   })
 
   # get/create input file

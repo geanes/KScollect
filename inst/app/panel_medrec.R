@@ -27,7 +27,6 @@ medrec_panel <- withTags({
               )
             )
           ),
-          # add_attribs(textInput("location", label = labelMandatory("Location"), value = "", placeholder = "Hospital", width = "100%"), tabindex = 4),
           # date inputs for birth and image
           fluidRow(
             column_xs(width = 6,
@@ -40,7 +39,16 @@ medrec_panel <- withTags({
           # calculated age fields
           fluidRow(
             column_xs(width = 6,
-              add_attribs(textInput("aged", label = "Age (days)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
+              div(class = "form-group",
+                label(`for` = "aged", "Age (days)"),
+                div(class = "input-group shiny-input-container",
+                  span(class = "input-group-addon",
+                    input(id = "calcAged", type = "checkbox", checked = "checked")
+                  ),
+                  input(type = "text", id = "aged", class = "form-control", tabindex = -1)
+                )
+              )
+              # add_attribs(textInput("aged", label = "Age (days)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
             ),
             column_xs(width = 6,
               add_attribs(textInput("agey", label = "Age (years)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
@@ -63,23 +71,23 @@ medrec_panel <- withTags({
           # height fields
           fluidRow(
             column_xs(width = 6,
-              add_attribs(textInput("height_raw", "Height", value = "", placeholder = "Height", width = "100%"), tabindex = 9)
+              add_attribs(textInput("height_raw", "Height", value = NA, placeholder = "Height", width = "100%"), tabindex = 9)
             ),
             column_xs(width = 6,
-              add_attribs(textInput("height", "(meters)", value = "", width = "100%"), tabindex = -1, readonly = "readonly")
+              add_attribs(textInput("height", "(meters)", value = NA, width = "100%"), tabindex = -1, readonly = "readonly")
             )
           ),
           # weight fields
           fluidRow(
             column_xs(width = 6,
-              add_attribs(textInput("weight_raw", "Weight", value = "", placeholder = "Weight", width = "100%"), tabindex = 10)
+              add_attribs(textInput("weight_raw", "Weight", value = NA, placeholder = "Weight", width = "100%"), tabindex = 10)
             ),
             column_xs(width = 6,
               add_attribs(textInput("weight", "(kilograms)", value = NA, width = "100%"), tabindex = -1, readonly = "readonly")
             )
           ),
-          add_attribs(textInput("COD", label = "Cause of death", value = "", width = "100%", placeholder = "COD"), tabindex = 11),
-          add_attribs(textInput("MOD", label = "Manner of death", value = "", width = "100%", placeholder = "MOD"), tabindex = 12)
+          add_attribs(textInput("COD", label = "Cause of death", value = NA, width = "100%", placeholder = "COD"), tabindex = 11),
+          add_attribs(textInput("MOD", label = "Manner of death", value = NA, width = "100%", placeholder = "MOD"), tabindex = 12)
         )
 
       )
