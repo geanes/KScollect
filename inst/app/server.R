@@ -21,6 +21,10 @@ server <- function(input, output, session) {
       data[["birth"]] <- NA
       data[["image"]] <- NA
     }
+    if (input$aged == 0) {
+      data[["aged"]] <- NA
+      data[["agey"]] <- NA
+    }
     data[["tstamp"]] <- human_time()
     return(data)
   })
