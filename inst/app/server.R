@@ -4,6 +4,7 @@ source("model.R", local = TRUE)
 source("crud.R", local = TRUE)
 source("helpers.R", local = TRUE)
 source("update.R", local = TRUE)
+source("validation.R", local = TRUE)
 
 server <- function(input, output, session) {
   shinyjs::disable("delete")
@@ -89,6 +90,51 @@ server <- function(input, output, session) {
     shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
   })
 
+  # Badge updates
+  observe({
+    date_fields <- c(input$birth, input$image)
+    text_fields <- c(input$medrec, input$location, input$height_raw,
+                     input$weight_raw, input$COD, input$MOD)
+    date_count <- ifelse(input$birth == input$image, 0, valid_count(date_fields, "date"))
+    age_count <- ifelse(input$aged > 0, 1, 0)
+    text_count <- valid_count(text_fields, "default")
+    valid <- valid_percent(sum(date_count, text_count, age_count), 9)
+    shinyjs::html("medrec-badge", paste0(valid, "%"))
+  })
+  observe({
+    num_fields <- c(input$FDL, input$FMSB, input$FDB, input$FCB, input$FIB,
+                    input$TDL, input$TPB, input$TMSB, input$TDB,
+                    input$FBDL,
+                    input$HDL, input$HPB, input$HMSB, input$HDB, input$HCB, input$HIB,
+                    input$RDL, input$RPB, input$RMSB, input$RDB,
+                    input$UDL, input$UMSB)
+    num_count <- valid_count(num_fields, "number")
+    valid <- valid_percent(num_count, 22)
+    shinyjs::html("longbone-badge", paste0(valid, "%"))
+  })
+  observe({
+    num_fields <- c(input$max_M1, input$max_M2, input$max_M3, input$max_PM1, input$max_PM2, input$max_C, input$max_I1, input$max_I2,
+                    input$man_M1, input$man_M2, input$man_M3, input$man_PM1, input$man_PM2, input$man_C, input$man_I1, input$man_I2)
+    side_fields <- c(input$max_M1_side, input$max_M2_side, input$max_M3_side, input$max_PM1_side, input$max_PM2_side, input$max_C_side, input$max_I1_side, input$max_I2_side,
+                     input$man_M1_side, input$man_M2_side, input$man_M3_side, input$man_PM1_side, input$man_PM2_side, input$man_C_side, input$man_I1_side, input$man_I2_side)
+    num_count <- valid_count(num_fields, "number", min = 0, max = 13)
+    side_count <- valid_count(side_fields, "default")
+    valid <- valid_percent(sum(num_count, side_count), 32)
+    shinyjs::html("dentition-badge", paste0(valid, "%"))
+  })
+  observe({
+    drop_fields <- c(input$FH_EF, input$FGT_EF, input$FLT_EF, input$FDE_EF,
+                     input$TPE_EF, input$TDE_EF,
+                     input$FBPE_EF, input$FBDE_EF,
+                     input$HH_Oss, input$HGT_Oss, input$HLT_Oss, input$HPE_EF, input$HC_Oss, input$HT_Oss, input$HLE_Oss, input$HCE1_EF, input$HCE2_EF, input$HDE_EF, input$HME_EF,
+                     input$RPE_EF, input$RDE_EF,
+                     input$UPE_EF, input$UDE_EF,
+                     input$CT_EF, input$CC_Oss, input$TC_Oss, input$ISPR_EF, input$ILIS_EF, input$PC_Oss)
+    drop_count <- valid_count(drop_fields, "default")
+    valid <- valid_percent(drop_count, 29)
+    shinyjs::html("fusion-badge", paste0(valid, "%"))
+  })
+
   # Click "Most recent" button
   observeEvent(input$recent, {
     if (exists(".responses") && length(.responses) > 0) {
@@ -119,7 +165,7 @@ server <- function(input, output, session) {
         UpdateInputs(CreateDefaultRecord(), session)
       }
       shinyjs::show(id = "success_msg", anim = TRUE, animType = "fade")
-      shinyjs::delay(2000, shinyjs::hide(id = "success_msg", anim = TRUE, anuimType = "fade"))
+      shinyjs::delay(2000, shinyjs::hide(id = "success_msg", anim = TRUE, animType = "fade"))
     },
     error = function(err) {
       shinyjs::text("error_msg", err$message)
@@ -137,7 +183,7 @@ server <- function(input, output, session) {
   # Press "Reset" button -> display empty record
   observeEvent(input$reset, {
     UpdateInputs(CreateDefaultRecord(), session)
-    shinyjs::text("submit", "<i class='fa fa-plus'></i> Add record")
+    shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
     shinyjs::disable("delete")
   })
 
@@ -159,7 +205,7 @@ server <- function(input, output, session) {
       data <- ReadData()[input$responses_rows_selected, ]
       UpdateInputs(data, session)
       updateTextInput(session, "location", value = data[["location"]])
-      shinyjs::text("submit",  "<i class='fa fa-edit'></i> Edit record")
+      shinyjs::html("submit",  "<i class='fa fa-edit'></i> Edit record")
       shinyjs::enable("delete")
     }
   })

@@ -44,15 +44,15 @@ convert_height <- function(height) {
     return(meas[1])
   } else {
     result <- switch(unit[1],
-                     "'" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
-                     "ft" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), meas[2] * 0.025, 0),
-                     "\"" = meas[1] * 0.025,
-                     "in" = meas[1] * 0.025,
+                     "'" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), (meas[2] / 12) * 0.305, 0),
+                     "ft" = meas[1] * 0.305 + ifelse(!is.na(meas[2]), (meas[2] / 12) * 0.305, 0),
+                     "\"" = (meas[1] / 12) * 0.305,
+                     "in" = (meas[1] / 12) * 0.305,
                      "m" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 100, 0),
                      "cm" = meas[1] / 100,
                      NA
     )
-    return(result)
+    return(round(result, digits = 3))
   }
 }
 
@@ -67,13 +67,13 @@ convert_weight <- function(wt) {
     return(meas[1])
   } else {
     result <- switch(unit[1],
-                     "lb" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
-                     "lbs" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), meas[2] * 0.028, 0),
-                     "oz" = meas[1] * 0.028,
+                     "lb" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), (meas[2] / 16) * 0.454, 0),
+                     "lbs" = meas[1] * 0.454 + ifelse(!is.na(meas[2]), (meas[2] / 16) * 0.454, 0),
+                     "oz" = (meas[1] / 16) * 0.454,
                      "g" = meas[1] / 1000,
                      "kg" = meas[1] + ifelse(!is.na(meas[2]), meas[2] / 1000, 0),
                      NA
     )
-    return(result)
+    return(round(result, digits = 3))
   }
 }
