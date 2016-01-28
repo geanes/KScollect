@@ -23,12 +23,11 @@ return(TRUE)
 }
 
 # count valid for a list of inputs
-valid_count <- function(children, type = "default", ...) {
+valid_count <- function(values, type = "default", ...) {
   count <- 0
   elipses <- list(...)
   min <- ifelse("min" %in% names(elipses), elipses[["min"]], 0)
   max <- ifelse("max" %in% names(elipses), elipses[["max"]], 10000)
-  values <- children
   count <- switch(type,
                   number = sum(sapply(values, validNumber, min = min, max = max)),
                   date = sum(sapply(values, validDate)),
@@ -52,5 +51,5 @@ validDate <- function(x) {
 validNumber <- function(x, min = 0, max = 10000) {
   if (!isTruthy(x)) return(FALSE)
   if (!is.numeric(x)) return(FALSE)
-  ifelse(x >= min && x <= max, TRUE, FALSE)
+  ifelse(x > min && x <= max, TRUE, FALSE)
 }

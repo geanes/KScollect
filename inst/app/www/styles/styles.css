@@ -1,3 +1,7 @@
 .mandatory_star {
   color: red;
 }
+
+.has-error {
+  border-color: red;
+}
