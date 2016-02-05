@@ -20,7 +20,7 @@ medrec_panel <- withTags({
           add_attribs(textInput("medrec", label = labelMandatory("Record number"), value = "", placeholder = "Record #", width = "100%"), tabindex = 3),
           div(class = "form-group",
             label(`for` = "location", labelMandatory("Location")),
-            div(class = "input-group shiny-input-container",
+            div(class = "input-group shiny-input-container", style = "width: 100%;",
               input(type = "text", id = "location", class = "form-control", placeholder = "Hospital", tabindex = 4),
               span(class = "input-group-btn",
                 button(id = "recentLocation", class = "btn btn-default action-button", type = "button", i(class = "fa fa-bolt fa-fw"))
@@ -41,7 +41,7 @@ medrec_panel <- withTags({
             column_xs(width = 6,
               div(class = "form-group",
                 label(`for` = "aged", "Age (days)"),
-                div(class = "input-group shiny-input-container",
+                div(class = "input-group shiny-input-container", style = "width: 100%;",
                   span(class = "input-group-addon",
                     input(id = "calcAged", type = "checkbox", checked = "checked")
                   ),
