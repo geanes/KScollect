@@ -15,7 +15,7 @@ source("panel_dentition.R", local = TRUE)
 source("panel_fusion.R", local = TRUE)
 source("panel_metadata.R", local = TRUE)
 
-ui <- bootstrapPage(title = "KidnapR",
+ui <- bootstrapPage(title = "KScollect",
   # include font-awesome, datepicker
   tags$head(tags$link(rel = "stylesheet", type = "text/css",
                       href = "shared/font-awesome/css/font-awesome.min.css"),

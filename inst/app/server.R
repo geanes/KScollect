@@ -243,7 +243,7 @@ server <- function(input, output, session) {
     if (exists(".responses")) {
       rm(.responses, inherits = TRUE)
     }
-    stopApp("Thank you for using KidnapR.")
+    stopApp("Thank you for using KScollect.")
   })
 
 }

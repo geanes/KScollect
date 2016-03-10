@@ -1,5 +1,5 @@
-KidnapR
-=======
+KScollect
+=========
 
 Shiny application to collect subadult long-bone measurements for future inclusion in KidStats.
 
@@ -8,16 +8,16 @@ KidStats is based on the research of Kyra Stull PhD (http://kyrastull.weebly.com
 Installation:
 -------------
 
-KidnapR is developed with **R** version 3.2.2.
+KScollect is developed with **R** version 3.2.2.
 
 ```r
 install.packages("devtools")
-devtools::install_github("geanes/kidnapr")
+devtools::install_github("geanes/KScollect")
 ```
 Usage:
 ------
 
 ```r
-library(kidnapr)
-kidnapr()
+library(KScollect)
+KScollect()
 ```
