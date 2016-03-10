@@ -168,7 +168,7 @@ server <- function(input, output, session) {
       shinyjs::delay(2000, shinyjs::hide(id = "success_msg", anim = TRUE, animType = "fade"))
     },
     error = function(err) {
-      shinyjs::text("error_msg", err$message)
+      shinyjs::html("error_msg", err$message)
       shinyjs::show(id = "error", anim = TRUE, animType = "fade")
     },
     finally = {
@@ -193,9 +193,9 @@ server <- function(input, output, session) {
     UpdateInputs(CreateDefaultRecord(), session)
     path <- as.character(isolate(filePath()))
     saveFile(path, .responses)
-    shinyjs::text("submit", "<i class='fa fa-plus'></i> Add record")
+    shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
     shinyjs::show(id = "delete_msg", anim = TRUE, animType = "fade")
-    shinyjs::delay(2000, shinyjs::hide(id = "delete_msg", anim = TRUE, anuimType = "fade"))
+    shinyjs::delay(2000, shinyjs::hide(id = "delete_msg", anim = TRUE, animType = "fade"))
     shinyjs::disable("delete")
   }, priority = 1)
 
