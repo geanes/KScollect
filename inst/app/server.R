@@ -225,7 +225,7 @@ server <- function(input, output, session) {
      rownames = FALSE,
      filter = list(position = "top", clear = TRUE, plain = FALSE),
      class = "cell-border stripe hover condensed",
-     extensions = "ColVis",
+     # extensions = "ColVis",
      options = list(dom = 'C<"clear">lfrtip',
                     pageLength = 3,
                     lengthMenu = c(1, 3, 5, 10, 20),

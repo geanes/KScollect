@@ -19,7 +19,7 @@ human_time <- function() {
 
 # Calculate ages from dates
 date_age <- function(start, end) {
-  if (start == "" || end == "") return(list(aged = NA, agey = NA))
+  if (length(start) == 0 || length(end) == 0 || start == end) return(list(aged = NA, agey = NA))
   age_days <- as.integer(lubridate::ymd(end) - lubridate::ymd(start))
   age_years <- as.numeric(round(age_days/365, digits = 2))
   result <- list(aged = age_days, agey = age_years)

@@ -1,8 +1,8 @@
 Package: KScollect
 Tyoe: Package
 Title: Purpose-built app for collecting data for future inclusion in KidStats.
-Version: 0.2.2.9001
-Date: 2015-11-12
+Version: 0.3.0.9000
+Date: 2016-10-12
 Authors@R: c(
     person("Glenn", "Eanes", email = "glenn.eanes@gmail.com", role = "cre"),
     person("Kyra", "Stull", email = "stulkyra@isu.edu", role = "aut"))

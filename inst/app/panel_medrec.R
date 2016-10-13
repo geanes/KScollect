@@ -30,10 +30,10 @@ medrec_panel <- withTags({
           # date inputs for birth and image
           fluidRow(
             column_xs(width = 6,
-              add_attribs(dateInput("birth", label = "Birth date", startview = "year", max = Sys.Date(), width = "100%"), tabindex = 5)
+              add_attribs(dateInput("birth", label = "Birth date", value = NULL, startview = "year", max = Sys.Date(), width = "100%"), tabindex = 5)
             ),
             column_xs(width = 6,
-              add_attribs(dateInput("image", label = "Image date", startview = "year", max = Sys.Date(), width = "100%"), tabindex = 6)
+              add_attribs(dateInput("image", label = "Image date", value = NULL, startview = "year", max = Sys.Date(), width = "100%"), tabindex = 6)
             )
           ),
           # calculated age fields
