@@ -113,13 +113,16 @@ server <- function(input, output, session) {
     shinyjs::html("longbone-badge", paste0(valid, "%"))
   })
   observe({
-    num_fields <- c(input$max_M1, input$max_M2, input$max_M3, input$max_PM1, input$max_PM2, input$max_C, input$max_I1, input$max_I2,
-                    input$man_M1, input$man_M2, input$man_M3, input$man_PM1, input$man_PM2, input$man_C, input$man_I1, input$man_I2)
-    side_fields <- c(input$max_M1_side, input$max_M2_side, input$max_M3_side, input$max_PM1_side, input$max_PM2_side, input$max_C_side, input$max_I1_side, input$max_I2_side,
-                     input$man_M1_side, input$man_M2_side, input$man_M3_side, input$man_PM1_side, input$man_PM2_side, input$man_C_side, input$man_I1_side, input$man_I2_side)
+    num_fields <- c(input$max_M1_L, input$max_M2_L, input$max_M3_L, input$max_PM1_L, input$max_PM2_L, input$max_C_L, input$max_I1_L, input$max_I2_L,
+                    input$max_M1_R, input$max_M2_R, input$max_M3_R, input$max_PM1_R, input$max_PM2_R, input$max_C_R, input$max_I1_R, input$max_I2_R,
+                    input$man_M1_L, input$man_M2_L, input$man_M3_L, input$man_PM1_L, input$man_PM2_L, input$man_C_L, input$man_I1_L, input$man_I2_L,
+                    input$man_M1_R, input$man_M2_R, input$man_M3_R, input$man_PM1_R, input$man_PM2_R, input$man_C_R, input$man_I1_R, input$man_I2_R)
+    # side_fields <- c(input$max_M1_side, input$max_M2_side, input$max_M3_side, input$max_PM1_side, input$max_PM2_side, input$max_C_side, input$max_I1_side, input$max_I2_side,
+    #                  input$man_M1_side, input$man_M2_side, input$man_M3_side, input$man_PM1_side, input$man_PM2_side, input$man_C_side, input$man_I1_side, input$man_I2_side)
     num_count <- valid_count(num_fields, "number", min = 0, max = 13)
-    side_count <- valid_count(side_fields, "default")
-    valid <- valid_percent(sum(num_count, side_count), 32)
+    # side_count <- valid_count(side_fields, "default")
+    valid <- valid_percent(num_count, 32)
+    # valid <- valid_percent(sum(num_count, side_count), 32)
     shinyjs::html("dentition-badge", paste0(valid, "%"))
   })
   observe({
