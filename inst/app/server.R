@@ -102,14 +102,20 @@ server <- function(input, output, session) {
     shinyjs::html("medrec-badge", paste0(valid, "%"))
   })
   observe({
-    num_fields <- c(input$FDL, input$FMSB, input$FDB, input$FCB, input$FIB,
-                    input$TDL, input$TPB, input$TMSB, input$TDB,
-                    input$FBDL,
-                    input$HDL, input$HPB, input$HMSB, input$HDB, input$HCB, input$HIB,
-                    input$RDL, input$RPB, input$RMSB, input$RDB,
-                    input$UDL, input$UMSB)
+    num_fields <- c(input$FDL_L, input$FMSB_L, input$FDB_L, input$FCB_L, input$FIB_L,
+                    input$TDL_L, input$TPB_L, input$TMSB_L, input$TDB_L,
+                    input$FBDL_L,
+                    input$HDL_L, input$HPB_L, input$HMSB_L, input$HDB_L, input$HCB_L, input$HIB_L,
+                    input$RDL_L, input$RPB_L, input$RMSB_L, input$RDB_L,
+                    input$UDL_L, input$UMSB_L,
+                    input$FDL_R, input$FMSB_R, input$FDB_R, input$FCB_R, input$FIB_R,
+                    input$TDL_R, input$TPB_R, input$TMSB_R, input$TDB_R,
+                    input$FBDL_R,
+                    input$HDL_R, input$HPB_R, input$HMSB_R, input$HDB_R, input$HCB_R, input$HIB_R,
+                    input$RDL_R, input$RPB_R, input$RMSB_R, input$RDB_R,
+                    input$UDL_R, input$UMSB_R)
     num_count <- valid_count(num_fields, "number")
-    valid <- valid_percent(num_count, 22)
+    valid <- valid_percent(num_count, 44)
     shinyjs::html("longbone-badge", paste0(valid, "%"))
   })
   observe({
