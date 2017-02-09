@@ -8,7 +8,7 @@ KidStats is based on the research of Kyra Stull PhD (http://kyrastull.weebly.com
 Installation:
 -------------
 
-KScollect is developed with **R** version 3.3.1.
+KScollect is developed with **R** version 3.3.2.
 
 ```r
 install.packages("devtools")
