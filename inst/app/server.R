@@ -132,15 +132,23 @@ server <- function(input, output, session) {
     shinyjs::html("dentition-badge", paste0(valid, "%"))
   })
   observe({
-    drop_fields <- c(input$FH_EF, input$FGT_EF, input$FLT_EF, input$FDE_EF,
-                     input$TPE_EF, input$TDE_EF,
-                     input$FBPE_EF, input$FBDE_EF,
-                     input$HH_Oss, input$HGT_Oss, input$HLT_Oss, input$HPE_EF, input$HC_Oss, input$HT_Oss, input$HLE_Oss, input$HCE1_EF, input$HCE2_EF, input$HDE_EF, input$HME_EF,
-                     input$RPE_EF, input$RDE_EF,
-                     input$UPE_EF, input$UDE_EF,
-                     input$CT_EF, input$CC_Oss, input$TC_Oss, input$ISPR_EF, input$ILIS_EF, input$PC_Oss)
+    drop_fields <- c(input$FH_EF_L, input$FGT_EF_L, input$FLT_EF_L, input$FDE_EF_L,
+                     input$TPE_EF_L, input$TDE_EF_L,
+                     input$FBPE_EF_L, input$FBDE_EF_L,
+                     input$HH_Oss_L, input$HGT_Oss_L, input$HLT_Oss_L, input$HPE_EF_L, input$HC_Oss_L, input$HT_Oss_L, input$HLE_Oss_L, input$HCE1_EF_L, input$HCE2_EF_L, input$HDE_EF_L, input$HME_EF_L,
+                     input$RPE_EF_L, input$RDE_EF_L,
+                     input$UPE_EF_L, input$UDE_EF_L,
+                     input$CT_EF_L, input$CC_Oss, input$TC_Oss, input$ISPR_EF_L, input$ILIS_EF_L, input$PC_Oss_L,
+
+                     input$FH_EF_R, input$FGT_EF_R, input$FLT_EF_R, input$FDE_EF_R,
+                     input$TPE_EF_R, input$TDE_EF_R,
+                     input$FBPE_EF_R, input$FBDE_EF_R,
+                     input$HH_Oss_R, input$HGT_Oss_R, input$HLT_Oss_R, input$HPE_EF_R, input$HC_Oss_R, input$HT_Oss_R, input$HLE_Oss_R, input$HCE1_EF_R, input$HCE2_EF_R, input$HDE_EF_R, input$HME_EF_R,
+                     input$RPE_EF_R, input$RDE_EF_R,
+                     input$UPE_EF_R, input$UDE_EF_R,
+                     input$CT_EF_R, input$ISPR_EF_R, input$ILIS_EF_R, input$PC_Oss_R)
     drop_count <- valid_count(drop_fields, "default")
-    valid <- valid_percent(drop_count, 29)
+    valid <- valid_percent(drop_count, 56)
     shinyjs::html("fusion-badge", paste0(valid, "%"))
   })
 

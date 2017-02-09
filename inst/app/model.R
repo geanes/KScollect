@@ -125,41 +125,76 @@ GetTableMetadata <- function() {
 
     # epiphyseal fusion and ossification
     # femur
-    FH_EF = c(label = "FH_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    FGT_EF = c(label = "FGT_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    FLT_EF = c(label = "FLT_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    FDE_EF = c(label = "FDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FH_EF_L = c(label = "FH_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FGT_EF_L = c(label = "FGT_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FLT_EF_L = c(label = "FLT_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FDE_EF_L = c(label = "FDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    FH_EF_R = c(label = "FH_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FGT_EF_R = c(label = "FGT_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FLT_EF_R = c(label = "FLT_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FDE_EF_R = c(label = "FDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # tibia
-    TPE_EF = c(label = "TPE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    TDE_EF = c(label = "TDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    TPE_EF_L = c(label = "TPE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    TDE_EF_L = c(label = "TDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    TPE_EF_R = c(label = "TPE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    TDE_EF_R = c(label = "TDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # fibula
-    FBPE_EF = c(label = "FBPE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    FBDE_EF = c(label = "FBDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FBPE_EF_L = c(label = "FBPE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FBDE_EF_L = c(label = "FBDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    FBPE_EF_R = c(label = "FBPE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    FBDE_EF_R = c(label = "FBDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # humerus
-    HH_Oss = c(label = "HH_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HGT_Oss = c(label = "HGT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HLT_Oss = c(label = "HLT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HPE_EF = c(label = "HPE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    HC_Oss = c(label = "HC_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HT_Oss = c(label = "HT_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HLE_Oss = c(label = "HLE_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HCE1_EF = c(label = "HCE1_EF", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HCE2_EF = c(label = "HCE2_EF", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
-    HDE_EF = c(label = "HDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    HME_EF = c(label = "HME_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    HH_Oss_L = c(label = "HH_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HGT_Oss_L = c(label = "HGT_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLT_Oss_L = c(label = "HLT_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HPE_EF_L = c(label = "HPE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    HC_Oss_L = c(label = "HC_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HT_Oss_L = c(label = "HT_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLE_Oss_L = c(label = "HLE_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE1_EF_L = c(label = "HCE1_EF_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE2_EF_L = c(label = "HCE2_EF_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HDE_EF_L = c(label = "HDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    HME_EF_L = c(label = "HME_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    HH_Oss_R = c(label = "HH_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HGT_Oss_R = c(label = "HGT_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLT_Oss_R = c(label = "HLT_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HPE_EF_R = c(label = "HPE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    HC_Oss_R = c(label = "HC_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HT_Oss_R = c(label = "HT_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HLE_Oss_R = c(label = "HLE_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE1_EF_R = c(label = "HCE1_EF_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HCE2_EF_R = c(label = "HCE2_EF_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    HDE_EF_R = c(label = "HDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    HME_EF_R = c(label = "HME_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # radius
-    RPE_EF = c(label = "RPE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    RDE_EF = c(label = "RDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    RPE_EF_L = c(label = "RPE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    RDE_EF_L = c(label = "RDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    RPE_EF_R = c(label = "RPE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    RDE_EF_R = c(label = "RDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # ulna
-    UPE_EF = c(label = "UPE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
-    UDE_EF = c(label = "UDE_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    UPE_EF_L = c(label = "UPE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    UDE_EF_L = c(label = "UDE_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
+    UPE_EF_R = c(label = "UPE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    UDE_EF_R = c(label = "UDE_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
     # other
-    CT_EF = c(label = "CT_EF", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    CT_EF_L = c(label = "CT_EF_L", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+    CT_EF_R = c(label = "CT_EF_R", value = "", type = "factor", levels = paste(c(0:2, 23, 3:4), collapse = ", "), ordered = TRUE),
+
     CC_Oss = c(label = "CC_Oss", value = "", type = "factor", levels = paste(c(0:8), collapse = ", "), ordered = TRUE),
     TC_Oss = c(label = "TC_Oss", value = "", type = "factor", levels = paste(c(0:7), collapse = ", "), ordered = TRUE),
-    ISPR_EF = c(label = "ISPR_EF", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
-    ILIS_EF = c(label = "ILIS_EF", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
-    PC_Oss = c(label = "PC_Oss", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE)
+
+    ISPR_EF_L = c(label = "ISPR_EF_L", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    ISPR_EF_R = c(label = "ISPR_EF_R", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    ILIS_EF_L = c(label = "ILIS_EF_L", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    ILIS_EF_R = c(label = "ILIS_EF_R", value = "", type = "factor", levels = paste(c(0:2), collapse = ", "), ordered = TRUE),
+    PC_Oss_L = c(label = "PC_Oss_L", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE),
+    PC_Oss_R = c(label = "PC_Oss_R", value = "", type = "factor", levels = paste(c(0:1), collapse = ", "), ordered = TRUE)
   )
   return(result)
 }
