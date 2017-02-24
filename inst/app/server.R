@@ -19,10 +19,10 @@ server <- function(input, output, session) {
     if (input$MOD == "") data[["MOD"]] <- NA
     if (input$height_raw == "") data[["height_raw"]] <- NA
     if (input$weight_raw == "") data[["weight_raw"]] <- NA
-    if (input$birth == input$image) {
-      data[["birth"]] <- NA
-      data[["image"]] <- NA
-    }
+    # if (input$birth == input$image) {
+    #   data[["birth"]] <- NA
+    #   data[["image"]] <- NA
+    # }
     if (input$aged == 0) {
       data[["aged"]] <- NA
       data[["agey"]] <- NA
