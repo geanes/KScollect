@@ -79,7 +79,8 @@ ReadData <- function() {
 
 ### SHOW ###
 ShowData <- function() {
-  if (exists(".responses") && length(.responses) > 0) {
+  # if (exists(".responses") && length(.responses) > 0) {
+  if (exists(".responses")) {
     result <- .responses[, show()]
     return(result)
   }

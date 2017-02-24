@@ -55,6 +55,7 @@ medrec_panel <- withTags({
             )
           ),
           # radio buttons for sex
+          # add_attribs(radioButtons("SEX", "Sex", choices = c("M", "F"), inline = TRUE), tabindex = 7),
           HTML('<div id="SEX" class="form-group shiny-input-radiogroup shiny-input-container shiny-input-container-inline">
                <label class="control-label" for="SEX">Sex</label>
                <div class="shiny-options-group">

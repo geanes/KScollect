@@ -5,6 +5,7 @@ source("crud.R", local = TRUE)
 source("helpers.R", local = TRUE)
 source("update.R", local = TRUE)
 source("validation.R", local = TRUE)
+.responses <- renew()
 
 server <- function(input, output, session) {
   shinyjs::disable("delete")
@@ -73,9 +74,16 @@ server <- function(input, output, session) {
     path <- as.character(isolate(filePath()))
     if (length(path) > 0 && file.exists(path)) {
       .responses <<- readFile(file = path)
+      UpdateInputs(CreateDefaultRecord(), session)
+      shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
+      shinyjs::disable("delete")
     } else if (length(path) > 0) {
-      .responses <<- data.frame()
+      .responses <- renew()
+      # .responses <<- data.frame()
       saveFile(path, .responses)
+      UpdateInputs(CreateDefaultRecord(), session)
+      shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
+      shinyjs::disable("delete")
     }
   })
 
@@ -155,13 +163,13 @@ server <- function(input, output, session) {
 
   # Click "Most recent" button
   observeEvent(input$recent, {
-    if (exists(".responses") && length(.responses) > 0) {
+    if (exists(".responses") && nrow(.responses) > 0) {
       last <- recents()
       updateTextInput(session, "collector", value = last[["collector"]])
     }
   })
   observeEvent(input$recentLocation, {
-    if (exists(".responses") && length(.responses) > 0) {
+    if (exists(".responses") && nrow(.responses) > 0) {
       last <- recents()
       updateTextInput(session, "location", value = last[["location"]])
     }
@@ -177,7 +185,10 @@ server <- function(input, output, session) {
       if (input$uid != "") {
         UpdateData(formData())
         dat <- ReadData()[input$responses_rows_selected, ]
-        UpdateInputs(dat, session)
+        # UpdateInputs(dat, session)
+        UpdateInputs(CreateDefaultRecord(), session)
+        shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
+        shinyjs::disable("delete")
       } else {
         CreateData(formData())
         UpdateInputs(CreateDefaultRecord(), session)
@@ -230,6 +241,7 @@ server <- function(input, output, session) {
 
   # display table
   output$responses <- DT::renderDataTable({
+    filePath()
     infile()
     #update after submit is clicked
     input$submit
@@ -252,12 +264,6 @@ server <- function(input, output, session) {
   )
 
   session$onSessionEnded(function() {
-    # path <- as.character(isolate(filePath()))
-    # if (length(path) > 0 && !identical(readFile(path), .responses)) {
-    #   saveFile(path, .responses)
-    #   msg <- paste0("Data saved to: ", path)
-    #   print(msg)
-    # }
     if (exists(".responses")) {
       rm(.responses, inherits = TRUE)
     }

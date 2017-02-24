@@ -1,5 +1,13 @@
 ## helpers.R ##
 
+# To set .responses
+renew <- function() {
+  suppressWarnings(rm(.responses))
+  responses <- data.frame(matrix(ncol = length(names(GetTableMetadata())), nrow = 0))
+  names(responses) <- names(GetTableMetadata())
+  return(responses)
+}
+
 # Time as integer
 epoch_time <- function() {
   as.integer(Sys.time())
