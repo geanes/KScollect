@@ -60,7 +60,8 @@ server <- function(input, output, session) {
   })
 
   # get/create input file
-  root <- c(home = "~")
+  # root <- c(home = "~")
+  root <- getVolumes()
   shinyFiles::shinyFileSave(input, "saveFile", roots = root, session = session)
   filePath <- reactive({
     shinyFiles::parseSavePath(root, input$saveFile)$datapath
