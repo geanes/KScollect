@@ -67,8 +67,12 @@ server <- function(input, output, session) {
   filePath <- reactive({
     shinyFiles::parseSavePath(root, input$saveFile)$datapath
   })
+  fileName <- reactive({
+    shinyFiles::parseSavePath(root, input$saveFile)$name
+  })
   output$filePath <- renderUI({
-    h6(filePath())
+    h6(fileName())
+    # h6(filePath())
   })
   infile <- eventReactive(filePath(), {
     path <- as.character(isolate(filePath()))
