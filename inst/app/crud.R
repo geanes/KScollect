@@ -54,6 +54,9 @@ CreateDefaultRecord <- function() {
 CastData <- function(data) {
   datar <- purrr::map2(names(data), data, as.table_type)
   names(datar) <- names(data)
+  missing_dates <- check_dates(datar)
+  if (missing_dates[["birth"]] == TRUE) datar[["birth"]] <- NA
+  if (missing_dates[["image"]] == TRUE) datar[["image"]] <- NA
   datar <- as.data.frame(datar, stringsAsFactors = FALSE)
   return(datar)
 }
@@ -88,8 +91,8 @@ ShowData <- function() {
 
 ### UPDATE ###
 UpdateData <- function(data) {
-  data <- CastData(data)
-  .responses[.responses[[key()]] == data[[key()]], ] <<- data
+  datar <- CastData(data)
+  .responses[.responses[[key()]] == datar[[key()]], ] <<- datar
 }
 
 ### DELETE ###

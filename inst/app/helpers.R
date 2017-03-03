@@ -8,6 +8,13 @@ renew <- function() {
   return(responses)
 }
 
+check_dates <- function(data) {
+  result <- c(birth = NA, image = NA)
+  result[["birth"]] <- length(data[["birth"]]) == 0
+  result[["image"]] <- length(data[["image"]]) == 0
+  return(result)
+}
+
 # Time as integer
 epoch_time <- function() {
   as.integer(Sys.time())

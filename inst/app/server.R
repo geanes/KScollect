@@ -187,8 +187,9 @@ server <- function(input, output, session) {
 
     tryCatch({
       if (input$uid != "") {
-        UpdateData(formData())
-        dat <- ReadData()[input$responses_rows_selected, ]
+        dat <- formData()
+        UpdateData(dat)
+        # dat <- ReadData()[input$responses_rows_selected, ]
         # UpdateInputs(dat, session)
         UpdateInputs(CreateDefaultRecord(), session)
         shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
