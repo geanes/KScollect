@@ -26,7 +26,7 @@ return(TRUE)
 valid_count <- function(values, type = "default", ...) {
   count <- 0
   elipses <- list(...)
-  min <- ifelse("min" %in% names(elipses), elipses[["min"]], 0)
+  min <- ifelse("min" %in% names(elipses), elipses[["min"]], -1)
   max <- ifelse("max" %in% names(elipses), elipses[["max"]], 10000)
   count <- switch(type,
                   number = sum(sapply(values, validNumber, min = min, max = max)),

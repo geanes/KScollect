@@ -138,7 +138,7 @@ server <- function(input, output, session) {
                     input$man_M1_R, input$man_M2_R, input$man_M3_R, input$man_PM1_R, input$man_PM2_R, input$man_C_R, input$man_I1_R, input$man_I2_R)
     # side_fields <- c(input$max_M1_side, input$max_M2_side, input$max_M3_side, input$max_PM1_side, input$max_PM2_side, input$max_C_side, input$max_I1_side, input$max_I2_side,
     #                  input$man_M1_side, input$man_M2_side, input$man_M3_side, input$man_PM1_side, input$man_PM2_side, input$man_C_side, input$man_I1_side, input$man_I2_side)
-    num_count <- valid_count(num_fields, "number", min = 0, max = 13)
+    num_count <- valid_count(num_fields, "number", min = -1, max = 13)
     # side_count <- valid_count(side_fields, "default")
     valid <- valid_percent(num_count, 32)
     # valid <- valid_percent(sum(num_count, side_count), 32)
