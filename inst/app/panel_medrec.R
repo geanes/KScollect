@@ -60,7 +60,7 @@ medrec_panel <- withTags({
                <label class="control-label" for="SEX">Sex</label>
                <div class="shiny-options-group">
                <label class="radio-inline">
-               <input type="radio" name="SEX" value="M" tabindex=7 />
+               <input type="radio" name="SEX" value="M" checked="checked" tabindex=7 />
                <span>Male</span>
                </label>
                <label class="radio-inline">
