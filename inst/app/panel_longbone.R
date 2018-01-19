@@ -42,7 +42,7 @@ longbone_panel <- withTags({
                   column_xs(width = 7,
                     div(class = "tab-content",
                         div(role = "tabpanel", class = "tab-pane active fade in", id = "humerus",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("HDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 15)
                             ),
@@ -87,7 +87,7 @@ longbone_panel <- withTags({
                         ),
 
                         div(role = "tabpanel", class = "tab-pane fade", id = "radius",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("RDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 22)
                             ),
@@ -132,7 +132,7 @@ longbone_panel <- withTags({
                         ),
 
                         div(role = "tabpanel", class = "tab-pane fade", id = "ulna",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("UDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 27)
                             ),
@@ -177,7 +177,7 @@ longbone_panel <- withTags({
                         ),
 
                         div(role = "tabpanel", class = "tab-pane fade", id = "femur",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("FDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 30)
                             ),
@@ -222,7 +222,7 @@ longbone_panel <- withTags({
                         ),
 
                         div(role = "tabpanel", class = "tab-pane fade", id = "tibia",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("TDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 36)
                             ),
@@ -267,7 +267,7 @@ longbone_panel <- withTags({
                         ),
 
                         div(role = "tabpanel", class = "tab-pane fade", id = "fibula",
-                          h5(strong("Diaphysial length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                          h5(strong("Diaphyseal length"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
                           column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
                             add_attribs(numericInput("FBDL_L", NULL, value = NA, min = -1, width = "100%"), tabindex = 41)
                             ),
