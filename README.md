@@ -1,3 +1,7 @@
+NOTE:
+-----
+As of latest version (0.5.0.9000), the way **RDS** files are loaded or created has changed. See **Usage** below.
+
 KScollect
 =========
 
@@ -17,7 +21,16 @@ devtools::install_github("geanes/KScollect")
 Usage:
 ------
 
+To open an existing **.rds** file, run the app with no arguments and you will be prompted to choose an existing file to edit.
+
 ```r
 library(KScollect)
 KScollect()
+```
+
+To create a new **.rds** file, run the app with a quoted path as the **new** argument.
+
+```r
+library(KScollect)
+KScollect("Path/to/my/newfile.rds")
 ```
