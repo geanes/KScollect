@@ -32,5 +32,5 @@ To create a new **.rds** file, run the app with a quoted path as the **new** arg
 
 ```r
 library(KScollect)
-KScollect("Path/to/my/newfile.rds")
+KScollect("/Path/to/my/newfile.rds")
 ```
