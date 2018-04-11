@@ -61,35 +61,56 @@ server <- function(input, output, session) {
   })
 
   # get/create input file
-  # root <- c(home = "~")
-  root <- getVolumes()
-  shinyFiles::shinyFileSave(input, "saveFile", roots = root, session = session)
   filePath <- reactive({
-    shinyFiles::parseSavePath(root, input$saveFile)$datapath
-  })
-  fileName <- reactive({
-    shinyFiles::parseSavePath(root, input$saveFile)$name
-  })
+      getShinyOption("file_path")
+    })
   output$filePath <- renderUI({
-    h6(fileName())
-    # h6(filePath())
+    h6(filePath())
   })
   infile <- eventReactive(filePath(), {
-    path <- as.character(isolate(filePath()))
-    if (length(path) > 0 && file.exists(path)) {
+    path <- isolate(filePath())
+    if (!getShinyOption("newfile") && file.exists(path)) {
       .responses <<- readFile(file = path)
       UpdateInputs(CreateDefaultRecord(), session)
       shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
       shinyjs::disable("delete")
-    } else if (length(path) > 0) {
+    } else if (length(getShinyOption("newfile")) > 0 && file.exists(path)) {
       .responses <- renew()
-      # .responses <<- data.frame()
       saveFile(path, .responses)
       UpdateInputs(CreateDefaultRecord(), session)
       shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
       shinyjs::disable("delete")
     }
   })
+
+  # root <- getVolumes()
+  # shinyFiles::shinyFileSave(input, "saveFile", roots = root, session = session)
+  # filePath <- reactive({
+  #   shinyFiles::parseSavePath(root, input$saveFile)$datapath
+  # })
+  # fileName <- reactive({
+  #   shinyFiles::parseSavePath(root, input$saveFile)$name
+  # })
+  # output$filePath <- renderUI({
+  #   h6(fileName())
+  #   # h6(filePath())
+  # })
+  # infile <- eventReactive(filePath(), {
+  #   path <- as.character(isolate(filePath()))
+  #   if (length(path) > 0 && file.exists(path)) {
+  #     .responses <<- readFile(file = path)
+  #     UpdateInputs(CreateDefaultRecord(), session)
+  #     shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
+  #     shinyjs::disable("delete")
+  #   } else if (length(path) > 0) {
+  #     .responses <- renew()
+  #     # .responses <<- data.frame()
+  #     saveFile(path, .responses)
+  #     UpdateInputs(CreateDefaultRecord(), session)
+  #     shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
+  #     shinyjs::disable("delete")
+  #   }
+  # })
 
   # watch for filling of mandatory fields
   observe({
