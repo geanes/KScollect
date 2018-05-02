@@ -75,7 +75,7 @@ server <- function(input, output, session) {
       shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
       shinyjs::disable("delete")
     } else if (length(getShinyOption("newfile")) > 0 && file.exists(path)) {
-      .responses <- renew()
+      .responses <<- renew()
       saveFile(path, .responses)
       UpdateInputs(CreateDefaultRecord(), session)
       shinyjs::html("submit", "<i class='fa fa-plus'></i> Add record")
