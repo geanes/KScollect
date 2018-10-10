@@ -147,9 +147,10 @@ server <- function(input, output, session) {
                     input$FBDL_R,
                     input$HDL_R, input$HPB_R, input$HMSB_R, input$HDB_R, input$HCB_R, input$HIB_R,
                     input$RDL_R, input$RPB_R, input$RMSB_R, input$RDB_R,
-                    input$UDL_R, input$UMSB_R)
+                    input$UDL_R, input$UMSB_R,
+                    input$PIH_L, input$PIH_R, input$PIB_L, input$PIB_R)
     num_count <- valid_count(num_fields, "number")
-    valid <- valid_percent(num_count, 44)
+    valid <- valid_percent(num_count, 48)
     shinyjs::html("longbone-badge", paste0(valid, "%"))
   })
   observe({
@@ -293,7 +294,7 @@ server <- function(input, output, session) {
     if (exists(".responses")) {
       rm(.responses, inherits = TRUE)
     }
-    stopApp("Thank you for using KScollect.")
+    stopApp("Thank you for using KScollect. Remember to backup your data.")
   })
 
 }

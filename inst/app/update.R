@@ -64,6 +64,10 @@ UpdateInputs <- function(data, session) {
   updateNumericInput(session, "RDB_R", value = data[["RDB_R"]])
   updateNumericInput(session, "UDL_R", value = data[["UDL_R"]])
   updateNumericInput(session, "UMSB_R", value = data[["UMSB_R"]])
+  updateNumericInput(session, "PIH_L", value = data[["PIH_L"]])
+  updateNumericInput(session, "PIB_L", value = data[["PIB_L"]])
+  updateNumericInput(session, "PIH_R", value = data[["PIH_R"]])
+  updateNumericInput(session, "PIB_R", value = data[["PIB_R"]])
 
   # dentition maxillary
   updateNumericInput(session, "max_M1_L", value = data[["max_M1_L"]])

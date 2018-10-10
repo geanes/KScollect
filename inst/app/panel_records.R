@@ -13,7 +13,7 @@ records_panel <- withTags({
       ),
 
       # panel body
-      div(class = "collapse", id = "records-panel",
+      div(class = "collapse in", id = "records-panel",
         div(class = "panel-body",
           div(id = "rectable", DT::dataTableOutput("responses"))
         )

@@ -8,7 +8,7 @@ longbone_panel <- withTags({
           div(class = "panel-heading",
               a(href = "#longbone-panel", "data-toggle" = "collapse", tabindex = "13",
                 span(class = "badge pull-right", id = "longbone-badge", "0%"),
-                h3(class = "panel-title", "Long bones")
+                h3(class = "panel-title", "Skeletal Metrics")
               )
           ),
 
@@ -36,6 +36,10 @@ longbone_panel <- withTags({
                       ),
                       li(role = "presentation",
                          a(href = "#fibula", role = "tab", `data-toggle` = "pill", tabindex = "40", "Fibula")
+                      ),
+                      li(hr()),
+                      li(role = "presentation",
+                         a(href = "#pelvis", role = "tab", `data-toggle` = "pill", "Pelvis")
                       )
                     )
                   ),
@@ -309,7 +313,25 @@ longbone_panel <- withTags({
                           column_xs(width = 6, style = "padding-left: 2px; padding-right: 0px;",
                             add_attribs(numericInput("FBIB_R", NULL, value = NA, min = -1, width = "100%"), tabindex = -1, readonly = "readonly")
                             )
+                        ),
+
+                        div(role = "tabpanel", class = "tab-pane fade", id = "pelvis",
+                            h5(strong("Ilium height"), style = "margin-top: 0px; margin-bottom: 7px;", tabindex = -1),
+                            column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
+                              add_attribs(numericInput("PIH_L", NULL, value = NA, min = -1, width = "100%"), tabindex = -1)
+                              ),
+                            column_xs(width = 6, style = "padding-left: 2px; padding-right: 0px;",
+                              add_attribs(numericInput("PIH_R", NULL, value = NA, min = -1, width = "100%"), tabindex = -1)
+                              ),
+                            h5(strong("Ilium breadth"), style = "margin-top: 7px; margin-bottom: 7px;", tabindex = -1),
+                            column_xs(width = 6, style = "padding-left: 0px; padding-right: 2px;",
+                              add_attribs(numericInput("PIB_L", NULL, value = NA, min = -1, width = "100%"), tabindex = -1)
+                              ),
+                            column_xs(width = 6, style = "padding-left: 2px; padding-right: 0px;",
+                              add_attribs(numericInput("PIB_R", NULL, value = NA, min = -1, width = "100%"), tabindex = -1)
+                            )
                         )
+
                     )
                   )
 
