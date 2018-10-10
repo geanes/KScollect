@@ -1,6 +1,6 @@
 NOTE:
 -----
-As of latest version (0.5.0.9000), the way **RDS** files are loaded or created has changed. See **Usage** below.
+As version 0.5.0.9000, the way **RDS** files are loaded or created has changed. See **Usage** below.
 
 KScollect
 =========
